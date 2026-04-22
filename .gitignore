@@ -37,6 +37,10 @@ config.local.*
 03_Projects/**/experiments/**/*.parquet
 03_Projects/**/experiments/**/*.arrow
 
+# Quartz build artefacts
+quartz-build/
+public/
+
 # Python / Jupyter
 __pycache__/
 *.pyc

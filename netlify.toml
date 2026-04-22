@@ -1,0 +1,15 @@
+[build]
+  command   = "bash build.sh"
+  publish   = "quartz-build/public"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Cache the Quartz clone and its node_modules across builds
+[build.processing]
+  skip_processing = false
+
+[[plugins]]
+  package = "@netlify/plugin-caching"
+  [plugins.inputs]
+    paths = ["quartz-build"]
