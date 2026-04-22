@@ -1,0 +1,45 @@
+.obsidian/workspace
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+.obsidian/cache
+.obsidian/*.json.bak
+.trash/
+
+# if we want to share plugins and themes:
+# .obsidian/plugins/        → compartir
+# .obsidian/snippets/       → compartir (CSS)
+# .obsidian/themes/         → compartir
+# .obsidian/app.json        → compartir
+# .obsidian/core-plugins.json → compartir
+# .obsidian/community-plugins.json → compartir
+# .obsidian/appearance.json → compartir
+# .obsidian/hotkeys.json    → compartir
+
+# ==========================================
+# OS
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vscode/
+*.swp
+*~
+
+.env
+.env.*
+*.key
+config.local.*
+
+# in case of experiments
+03_Projects/**/experiments/**/raw/
+03_Projects/**/experiments/**/*.parquet
+03_Projects/**/experiments/**/*.arrow
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/

@@ -1,0 +1,22 @@
+{
+  "attachmentFolderPath": "01_Sources/assets",
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "00_Inbox",
+  "userIgnoreFilters": [
+    ".git/",
+    ".trash/"
+  ],
+  "showLineNumber": true,
+  "showFrontmatter": true,
+  "strictLineBreaks": false,
+  "tabSize": 2,
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}
