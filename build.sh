@@ -18,7 +18,7 @@ fi
 # ── 2. Install dependencies ───────────────────────────────────────────────────
 echo ">> Installing Node dependencies"
 cd "$QUARTZ_DIR"
-npm install --production
+npm install --omit=dev
 
 # ── 3. Copy vault content ─────────────────────────────────────────────────────
 echo ">> Syncing vault content"
@@ -33,8 +33,17 @@ cp -r ../02_Wiki/. "$CONTENT_DIR/"
 mkdir -p "$CONTENT_DIR/_meta"
 cp -r ../_meta/. "$CONTENT_DIR/_meta/"
 
+# Literature notes from 01_Sources/papers/ (md only, no PDFs)
+mkdir -p "$CONTENT_DIR/sources/papers"
+find ../01_Sources/papers -maxdepth 1 -name "*.md" -exec cp {} "$CONTENT_DIR/sources/papers/" \;
+
 # Home page — Quartz requires content/index.md at the root
-cp ../_meta/index.md "$CONTENT_DIR/index.md"
+# Promote _meta/index.md to the content root (mv avoids a duplicate)
+if [ -f "$CONTENT_DIR/_meta/index.md" ]; then
+  mv "$CONTENT_DIR/_meta/index.md" "$CONTENT_DIR/index.md"
+else
+  echo -e "---\ntitle: RAG - Wiki\n---\n\n# RAG - Wiki\n\nWelcome to the RAG research wiki." > "$CONTENT_DIR/index.md"
+fi
 
 # ── 4. Custom Quartz config (optional) ───────────────────────────────────────
 if [ -f "../quartz.config.ts" ]; then

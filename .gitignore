@@ -40,6 +40,7 @@ config.local.*
 # Quartz build artefacts
 quartz-build/
 public/
+build-output.log
 
 # Python / Jupyter
 __pycache__/
