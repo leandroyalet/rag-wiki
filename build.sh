@@ -33,6 +33,9 @@ cp -r ../02_Wiki/. "$CONTENT_DIR/"
 mkdir -p "$CONTENT_DIR/_meta"
 cp -r ../_meta/. "$CONTENT_DIR/_meta/"
 
+# Home page — Quartz requires content/index.md at the root
+cp ../_meta/index.md "$CONTENT_DIR/index.md"
+
 # ── 4. Custom Quartz config (optional) ───────────────────────────────────────
 if [ -f "../quartz.config.ts" ]; then
   echo ">> Applying custom quartz.config.ts"
