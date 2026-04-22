@@ -37,6 +37,10 @@ cp -r ../_meta/. "$CONTENT_DIR/_meta/"
 mkdir -p "$CONTENT_DIR/sources/papers"
 find ../01_Sources/papers -maxdepth 1 -name "*.md" -exec cp {} "$CONTENT_DIR/sources/papers/" \;
 
+# Web clips from 01_Sources/web_clips/
+mkdir -p "$CONTENT_DIR/sources/web_clips"
+find ../01_Sources/web_clips -maxdepth 1 -name "*.md" -exec cp {} "$CONTENT_DIR/sources/web_clips/" \;
+
 # Home page — Quartz requires content/index.md at the root
 # Promote _meta/index.md to the content root (mv avoids a duplicate)
 if [ -f "$CONTENT_DIR/_meta/index.md" ]; then
