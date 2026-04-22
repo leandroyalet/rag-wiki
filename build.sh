@@ -18,7 +18,7 @@ fi
 # ── 2. Install dependencies ───────────────────────────────────────────────────
 echo ">> Installing Node dependencies"
 cd "$QUARTZ_DIR"
-npm ci --prefer-offline --silent
+npm install --production
 
 # ── 3. Copy vault content ─────────────────────────────────────────────────────
 echo ">> Syncing vault content"
