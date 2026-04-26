@@ -5,7 +5,7 @@ tags: [rag, engineering, evaluation, quality]
 status: stub
 created: 2026-04-19
 updated: 2026-04-19
-sources: ["[[barnett2024failures]]"]
+sources: ["[[barnett2024failures]]", "[[brehme2025ragindustry]]"]
 ---
 
 # RAG Failure Points
@@ -47,6 +47,9 @@ Robustness evolves at runtime rather than being designed upfront — implying co
 | FP7 | Increase top-k; [[Multi-hop Retrieval]]; completeness checks |
 
 [[barnett2024failures]]
+
+## Industry perspective
+[[brehme2025ragindustry]] (13-practitioner interview study) identifies **data preprocessing** as the most commonly cited operational challenge in production RAG — cleaning, formatting, and normalising source documents before indexing. This is a pre-FP1 failure mode: if raw documents are noisy or poorly structured, the knowledge base is incomplete regardless of retrieval quality, directly causing FP1 (missing content) and FP2 (wrong chunks ranked). Industry evaluation of failure points is still predominantly human-conducted rather than automated. [[brehme2025ragindustry]]
 
 ## Relation to other evaluation frameworks
 - [[RAGAS]] and [[DeepEval]] metrics map onto FP2 (Context Relevance/Precision), FP1 + FP4 (Faithfulness), and FP6 + FP7 (Answer Relevance).

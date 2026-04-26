@@ -5,7 +5,7 @@ tags: [rag, method, retrieval, ranking]
 status: stub
 created: 2026-04-18
 updated: 2026-04-21
-sources: ["[[01_Sources/web_clips/embedding-models-for-rag]]", "[[oche2025ragsurvey]]"]
+sources: ["[[01_Sources/web_clips/embedding-models-for-rag]]", "[[oche2025ragsurvey]]", "[[01_Sources/web_clips/Contextual Retrieval in AI Systems]]", "[[01_Sources/web_clips/How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI]]"]
 introduced_by: 
 year: 
 ---
@@ -31,13 +31,23 @@ The cross-encoder sees both query and document simultaneously — enabling token
 4. Pass top-n (e.g., 3–10) reranked documents as LLM context.
 
 ## Reference implementations
-- **Models**: `cross-encoder/ms-marco-MiniLM-L-6-v2` (sentence-transformers), Cohere Rerank API, Jina Reranker v2, BGE-Reranker.
+- **Models**: `cross-encoder/ms-marco-MiniLM-L-6-v2` (sentence-transformers), Cohere Rerank API, Jina Reranker v2, BGE-Reranker, **Qwen Reranker**. [[01_Sources/web_clips/How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI]]
 - **LangChain**: `CohereRerank` document compressor.
 - **LlamaIndex**: `SentenceTransformerRerank` node postprocessor.
 - **Haystack**: `TransformersSimilarityRanker` component.
 
 ## Reported results
 Two-stage retrieval (dense + rerank) substantially improves precision on knowledge-intensive benchmarks vs. single-stage. [[oche2025ragsurvey]] On [[BEIR]], cross-encoder reranking typically adds 5–15 % NDCG@10 over the bi-encoder baseline.
+
+Anthropic tested reranking as the final stage in a [[Contextual Retrieval]] pipeline (Contextual Embeddings + Contextual BM25 + Reranking using **Cohere Rerank**), reducing top-20 retrieval failures from 5.7% to **1.9%** — a 67% reduction vs. the embedding-only baseline. [[01_Sources/web_clips/Contextual Retrieval in AI Systems]]
+
+## Recall vs. precision framing
+Reranking improves *both* dimensions simultaneously [[01_Sources/web_clips/How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI]]:
+- **Recall**: puts relevant documents that ranked below the original top-k back into the final set.
+- **Precision**: pushes irrelevant documents that ranked in the top-k back out of the final set.
+
+### LLM verification (alternative/complement)
+A simpler precision filter: pass each retrieved chunk through an LLM judge that classifies it as relevant or not. Keeps only positively-classified chunks. Trade-off: higher cost and added latency per query. [[01_Sources/web_clips/How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI]]
 
 ## When to use / when not to
 - ✅ Retrieval precision is the bottleneck — top-k from the bi-encoder is noisy.

@@ -5,7 +5,7 @@ tags: [rag, retrieval, generation, foundational]
 status: draft
 created: 2026-04-18
 updated: 2026-04-18
-sources: ["[[lewis2020rag]]", "[[emonet2024sparql]]", "[[barnett2024failures]]", "[[agrawal2025cag]]", "[[chatzikyriakidis2025raggedevents]]", "[[oche2025ragsurvey]]"]
+sources: ["[[lewis2020rag]]", "[[emonet2024sparql]]", "[[barnett2024failures]]", "[[agrawal2025cag]]", "[[chatzikyriakidis2025raggedevents]]", "[[oche2025ragsurvey]]", "[[wampler2025ragstack]]", "[[brehme2025ragindustry]]"]
 ---
 
 # Retrieval-Augmented Generation
@@ -75,9 +75,31 @@ The **inverse calibration principle** ([[chatzikyriakidis2025raggedevents]]): fo
 ## Critique of the pattern
 Karpathy (2026) argues that classic RAG **rediscovers knowledge on every query**: the synthesis doesn't accumulate. He proposes compiling that knowledge into a wiki maintained by the LLM — the pattern this vault uses. See [[CLAUDE|CLAUDE.md]].
 
+## Industry adoption (2025)
+A semi-structured interview study with 13 industry practitioners ([[brehme2025ragindustry]]) found:
+- Current RAG deployments are **mostly domain-specific QA** in prototype/early-production stage.
+- Top system requirements: **data protection, security, output quality** (ethics and scalability underemphasised).
+- **Data preprocessing** (cleaning, formatting, normalising source documents) is the most consistently cited operational challenge — pre-indexing quality affects all downstream failure points.
+- System evaluation is **predominantly human-conducted**; automated frameworks (RAGAS, DeepEval) are known but not yet standard practice in industry.
+
+[[brehme2025ragindustry]]
+
+## Architecture taxonomy
+[[wampler2025ragstack]] proposes a five-dimensional classification of RAG systems (2018–2025 literature review):
+
+| Dimension | Options |
+|-----------|---------|
+| Retrieval strategy | Single-pass · Iterative · Multi-hop |
+| Fusion mechanism | Early ([[Fusion-in-Decoder\|FiD]]) · Late (RAG-Sequence) · Marginal ([[RAG-Fusion]]) |
+| Knowledge modality | Text-only · Structured · Multi-modal |
+| Trust calibration | Abstention · Citation grounding · Uncertainty quantification |
+| Pipeline adaptivity | Static rule-based · Agentic/self-adaptive |
+
+Deployment recommendations: hybrid sparse-dense retrieval for balanced performance; two-stage retrieval (bi-encoder + cross-encoder [[Reranking|reranking]]) for precision; semantic windowing beats fixed-size [[Chunking]] for context preservation. [[wampler2025ragstack]]
+
 ## Tooling
 Common orchestration frameworks: [[LangChain]], [[LlamaIndex]], [[Haystack]].
-Evaluation: [[RAGAS]], [[DeepEval]], [[TruLens]].
+Evaluation: [[RAGAS]], [[DeepEval]], [[TruLens]], [[LLM-as-Judge]].
 
 ## Related pages
 - [[Dense Retrieval]]
@@ -95,3 +117,5 @@ Evaluation: [[RAGAS]], [[DeepEval]], [[TruLens]].
 - [[barnett2024failures]] — seven failure point taxonomy from production deployments.
 - [[agrawal2025cag]] — CAG as RAG alternative; ACC compression; hybrid framework.
 - [[chatzikyriakidis2025raggedevents]] — inverse calibration principle: strong models may degrade with RAG augmentation.
+- [[wampler2025ragstack]] — five-dimensional taxonomy + trust framework from 2018–2025 systematic review.
+- [[brehme2025ragindustry]] — 13-practitioner interview study: data preprocessing top challenge; human eval still dominant.

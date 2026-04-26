@@ -38,6 +38,9 @@ Replace chunk-level retrieval with a structured [[Knowledge Graph]] extracted fr
 - Microsoft `graphrag` Python package (MIT licence): `pip install graphrag`
 - Integrations available for [[LangChain]] and [[LlamaIndex]].
 
+## Graph database backends
+The knowledge graph can be stored in any [[Labeled Property Graph]] or [[RDF]] store. Purpose-built options for GraphRAG workloads include [[FalkorDB]] (Redis-based, GraphBLAS engine, ultra-low latency) and Neo4j (mature LPG ecosystem). [[RDF]]-based stores (GraphDB, Apache Jena) are preferred when semantic reasoning is required.
+
 ## When to use / when not to
 - ✅ Analytical / sensemaking questions over a large thematically rich corpus.
 - ✅ Entities and relationships are first-class (legal docs, research literature, knowledge bases).

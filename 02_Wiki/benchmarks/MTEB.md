@@ -4,7 +4,7 @@ aliases: [Massive Text Embedding Benchmark]
 tags: [benchmark, embedding, retrieval, eval]
 status: stub
 created: 2026-04-18
-updated: 2026-04-21
+updated: 2026-04-23
 sources: ["[[01_Sources/web_clips/embedding-models-for-rag]]"]
 homepage: https://huggingface.co/spaces/mteb/leaderboard
 repo: https://github.com/embeddings-benchmark/mteb
@@ -36,9 +36,26 @@ The benchmark exposes trade-offs between model size, language coverage, and task
 [[01_Sources/web_clips/embedding-models-for-rag]]
 
 ## Key retrieval datasets (English)
-ArguAna, DBPedia, FEVER, FiQA-2018, HotpotQA, MSMARCO, NFCorpus, NQ, QuoraRetrieval, SCIDOCS, SciFact, TREC-COVID, Touché-2020. [[01_Sources/web_clips/embedding-models-for-rag]]
+| Dataset | Domain | Description |
+|---------|--------|-------------|
+| **ArguAna** | Debate | Argument ↔ counterargument pairs from an online debate portal |
+| **CQADupstack** | Q&A | Community questions from 12 StackExchange subforums |
+| **DBPedia** | Open | Heterogeneous entity-bearing queries (NE, keywords, NL) |
+| **FEVER** | Fact-check | Real-world misinformation fact verification |
+| **FiQA-2018** | Finance | Opinion-based QA from StackExchange Investment posts 2009–2017 |
+| **HotpotQA** | Multi-hop | Multi-paragraph reasoning questions, Wikipedia answers |
+| **MSMARCO** | Web | Bing search queries and passage answers |
+| **NFCorpus** | Medical | NutritionFacts queries + PubMed annotated documents |
+| **NQ** | Web | Google search queries with Wikipedia answer spans |
+| **QuoraRetrieval** | Q&A | Duplicate question pairs |
+| **SCIDOCS** | Science | Scientific papers and citation-based relevance |
+| **SciFact** | Science | Fact-checking claims against scientific literature |
+| **Touché-2020** | Debate | Conversational argument retrieval |
+| **TREC-COVID** | Medical | Biomedical queries on the COVID-19 pandemic |
 
-Domain-specific datasets (medical, financial, legal) reward specialists over general models.
+[[01_Sources/web_clips/embedding-models-for-rag]]
+
+Domain-specific datasets (medical, financial, legal) reward specialists over general models. For financial corpora, weight FiQA-2018; for biomedical, weight NFCorpus and TREC-COVID. [[01_Sources/web_clips/embedding-models-for-rag]]
 
 ## Metrics
 | Metric | Description |

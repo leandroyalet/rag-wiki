@@ -52,6 +52,7 @@ Plug-and-play connectors for [[LangChain]], [[LlamaIndex]], Crew AI, and Haystac
 - [[LangChain]]
 - [[LlamaIndex]]
 - [[Retrieval-Augmented Generation]]
+- [[MarkItDown]] — Microsoft's lighter-weight alternative
 
 ## Sources
 > [!todo] Source needed — no paper in 01_Sources/ yet; information from docling-project.github.io

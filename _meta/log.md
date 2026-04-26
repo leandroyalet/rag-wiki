@@ -145,6 +145,79 @@ Format:
   - `02_Wiki/concepts/Dense Retrieval.md` (BM25 → [[BM25]])
 - **notes**: resolved 5 broken links (Es2023ragas, gao2023hyde), created 3 new pages (ARES, Answer Relevance, BM25), wikilinked BM25 across 9 files
 
+## 2026-04-23 — Claude Code (/ingest)
+- **operation**: ingest — 00_Inbox/FalkorDB.md
+- **source**: `00_Inbox/FalkorDB.md` + falkordb.com / github.com/falkordb/falkordb
+- **files touched**:
+  - `02_Wiki/tools/FalkorDB.md` (new)
+  - `02_Wiki/methods/GraphRAG.md` (updated — graph backend options section)
+  - `02_Wiki/concepts/Labeled Property Graph.md` (updated — FalkorDB added as example)
+- **notes**: SSPLv1 licence (not fully open-source); GraphBLAS sparse-matrix engine is the key architectural differentiator; Redis module architecture means in-memory only by default; performance claims vs Neo4j not independently verified
+
+## 2026-04-23 — Claude Code (/ingest)
+- **operation**: ingest (all 3 web clips)
+- **source**: `Cutting Through the Noise An Introduction to RDF & LPG Graphs.md`, `Evaluate RAG pipeline using HuggingFace Open Source Models.md`, `embedding-models-for-rag.md`
+- **files touched**:
+  - `02_Wiki/concepts/RDF.md` (new)
+  - `02_Wiki/concepts/Labeled Property Graph.md` (new)
+  - `02_Wiki/tools/BeyondLLM.md` (new)
+  - `02_Wiki/concepts/Knowledge Graph.md` (updated — RDF/LPG variants section, new sources, alias cleanup)
+  - `02_Wiki/concepts/Embeddings.md` (updated — fine-tuning guidance, MTEB caveat)
+  - `02_Wiki/benchmarks/MTEB.md` (updated — full retrieval dataset table with descriptions)
+- **notes**: Clip 1 introduced RDF vs LPG distinction; clip 2 introduced BeyondLLM (HF-native RAG framework with RAG Triad eval); clip 3 already partially sourced Embeddings.md — added fine-tuning section from remaining content
+
+## 2026-04-22 — Claude Code (/update-index)
+- **operation**: update-index
+- **files touched**: `_meta/index.md`
+- **notes**: 46 pages indexed across 5 sections — Concepts (17), Methods (8), Models (4), Benchmarks (4), Tools (13); tools sub-grouped into vector stores / frameworks / parsing / evaluation
+
+## 2026-04-26 — Claude Code (/update-index)
+- **operation**: update-index
+- **files touched**: `_meta/index.md`
+- **notes**: 56 pages indexed across 5 sections — Concepts (20), Methods (12), Models (4), Benchmarks (4), Tools (16); tools sub-grouped into vector stores / graph databases / frameworks / parsing / evaluation
+
+## 2026-04-26 — Claude Code (/ingest)
+- **operation**: ingest (2 web clips)
+- **source**: `Contextual Retrieval in AI Systems.md` (Anthropic), `How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI.md`
+- **files touched**:
+  - `02_Wiki/methods/Contextual Retrieval.md` (new — full page with pipeline, results table, cost, comparison vs HyDE)
+  - `02_Wiki/methods/Reranking.md` (updated — Cohere 67% reduction result, recall/precision framing, LLM verification, Qwen Reranker)
+  - `02_Wiki/methods/Hybrid Search.md` (updated — Contextual BM25, context bloat/poisoning concepts, sources filled)
+  - `02_Wiki/concepts/Chunking.md` (updated — contextual enrichment section, Contextual Retrieval link)
+- **notes**: Contextual Retrieval is the key new method — 49% failure reduction (embeddings+BM25) and 67% with reranking; $1.02/M tokens with prompt caching; outperforms HyDE and summary-based indexing; clip 2 adds recall/precision framing for retrieval improvement techniques and introduces LLM verification and context bloat/poisoning concepts
+
+## 2026-04-26 — Claude Code (/ingest) [batch 2]
+- **operation**: ingest (5 papers)
+- **source**: `Ragas_...md` (duplicate of Es2023ragas), `RetrievalAugmented_Generation_in_Industry_...md` (brehme2025ragindustry), `The_Challenges_of_Evaluating_LLM_Applications_...md` (abeysinghe2024llmeval), `VERA_...md` (ding2024vera), `UniEval_...md` (li2025unieval — out of scope)
+- **files touched**:
+  - `01_Sources/papers/Ragas_...md` (marked summarized — duplicate of Es2023ragas)
+  - `01_Sources/papers/RetrievalAugmented_Generation_in_Industry_...md` (summarized — citekey brehme2025ragindustry)
+  - `01_Sources/papers/The_Challenges_of_Evaluating_LLM_Applications_...md` (summarized — citekey abeysinghe2024llmeval)
+  - `01_Sources/papers/VERA_...md` (summarized — citekey ding2024vera, 4-metric table + cross-encoder mechanism)
+  - `01_Sources/papers/UniEval_...md` (summarized — marked out of scope, no wiki pages)
+  - `02_Wiki/tools/VERA.md` (new — cross-encoder composite ranking, Bootstrap confidence bounds)
+  - `02_Wiki/concepts/LLM-as-Judge.md` (updated — factored evaluation 5 factors, inflation/agreement findings from abeysinghe2024llmeval)
+  - `02_Wiki/concepts/Retrieval-Augmented Generation.md` (updated — industry adoption section from brehme2025ragindustry)
+  - `02_Wiki/concepts/RAG Failure Points.md` (updated — data preprocessing as pre-FP1 industry challenge)
+- **notes**: RAGAS file was a duplicate (arXiv:2309.15217 = Es2023ragas); UniEval is multimodal, not RAG-relevant; brehme2025ragindustry confirms data preprocessing as top operational pain point; ding2024vera cross-encoder composite score differentiates it from RAGAS/DeepEval
+
+## 2026-04-26 — Claude Code (/ingest) [batch 1]
+- **operation**: ingest (5 papers)
+- **source**: `A_Closer_Look_into_Automatic_Evaluation_Using_Large_Language_Models.md` (chiang2023llmeval), `Adaptive_Chunking_...md` (moura2026adaptive), `Beyond_ChunkThenEmbed_...md` (zhou2026chunktaxonomy), `Engineering_the_RAG_Stack_...md` (wampler2025ragstack), `MoC_...md` (zhao2025moc)
+- **files touched**:
+  - `01_Sources/papers/A_Closer_Look_...md` (summarized — added citekey chiang2023llmeval, findings)
+  - `01_Sources/papers/Adaptive_Chunking_...md` (summarized — added citekey moura2026adaptive, 5-metric table)
+  - `01_Sources/papers/Beyond_ChunkThenEmbed_...md` (summarized — added citekey zhou2026chunktaxonomy, taxonomy + results)
+  - `01_Sources/papers/Engineering_the_RAG_Stack_...md` (summarized — added citekey wampler2025ragstack, 5-dim taxonomy)
+  - `01_Sources/papers/MoC_...md` (summarized — added citekey zhao2025moc, BC/CS formulas)
+  - `02_Wiki/concepts/LLM-as-Judge.md` (new)
+  - `02_Wiki/methods/Adaptive Chunking.md` (new)
+  - `02_Wiki/methods/Late Chunking.md` (new)
+  - `02_Wiki/methods/MoC.md` (new)
+  - `02_Wiki/concepts/Chunking.md` (updated — taxonomy section, 6 new variants, quality metrics)
+  - `02_Wiki/concepts/Retrieval-Augmented Generation.md` (updated — 5-dim taxonomy table, LLM-as-Judge link, wampler2025ragstack citation)
+- **notes**: all papers summarized from abstracts + arXiv HTML; chiang2023llmeval key finding: explain-then-rate correlation 0.725 vs 0.311 for auto-CoT+score-only; zhou2026chunktaxonomy: structure-based wins in-corpus, LumberChunker wins in-document; moura2026adaptive: adaptive selection → 72% vs 62-64% correctness
+
 ## 2026-04-21 — Claude Code
 - **operation**: fill 12 empty stubs (lint priority 2)
 - **files touched**:

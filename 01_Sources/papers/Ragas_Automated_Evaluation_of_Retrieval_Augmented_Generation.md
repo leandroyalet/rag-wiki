@@ -1,13 +1,17 @@
 ---
 title: "Ragas: Automated Evaluation of Retrieval Augmented Generation"
 authors: "Shahul Es, Jithin James, Luis Espinosa-Anke, Steven Schockaert"
+citekey: Es2023ragas
+aliases: [Es2023ragas]
 year: 2023
 venue: "ArXiv"
-url: "https://arxiv.org/pdf/2309.15217v2"
-tags: [paper, arxiv]
-status: to-read
+url: "https://arxiv.org/abs/2309.15217"
+tags: [paper, arxiv, evaluation, rag]
+status: summarized
 added_by: Pablo
 ---
+
+> **Duplicate note** — this file covers the same paper as `01_Sources/papers/Es2023ragas.md` (arXiv:2309.15217). The canonical literature note with full summary and metric formulas is `Es2023ragas.md`. Wiki page: [[RAGAS]].
 
 # Ragas: Automated Evaluation of Retrieval Augmented Generation
 

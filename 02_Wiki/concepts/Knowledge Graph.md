@@ -1,11 +1,11 @@
 ---
 type: concept
-aliases: [KG, Knowledge Base, RDF Graph]
+aliases: [KG, Knowledge Base]
 tags: [rag, knowledge-graph, retrieval]
 status: stub
 created: 2026-04-18
-updated: 2026-04-18
-sources: ["[[emonet2024sparql]]"]
+updated: 2026-04-23
+sources: ["[[emonet2024sparql]]", "[[01_Sources/web_clips/Cutting Through the Noise An Introduction to RDF & LPG Graphs]]"]
 ---
 
 # Knowledge Graph
@@ -24,6 +24,13 @@ In the RAG pipeline, a knowledge graph can replace or complement a [[Vector Data
 - **Federated queries**: a single SPARQL query can join multiple endpoints using `SERVICE` clauses, enabling cross-database reasoning. [[emonet2024sparql]]
 
 ## Variants
+
+### By graph model
+- **[[RDF]] graphs (triple stores)** — triples stored in standards-compliant databases (e.g., GraphDB, Apache Jena); support OWL reasoning, SPARQL queries, and SHACL/ShEx validation. Best for semantic interoperability and data aggregation across heterogeneous sources. [[01_Sources/web_clips/Cutting Through the Noise An Introduction to RDF & LPG Graphs]]
+- **[[Labeled Property Graph|LPG]] stores** — nodes and edges with key-value properties (e.g., Neo4j); better for graph traversal algorithms, ML pipelines, and developer ergonomics. [[01_Sources/web_clips/Cutting Through the Noise An Introduction to RDF & LPG Graphs]]
+- **Hybrid** — some organisations use RDF for data aggregation/reasoning and export subgraphs to an LPG for analytics. Amazon Neptune supports both in a single service. [[01_Sources/web_clips/Cutting Through the Noise An Introduction to RDF & LPG Graphs]]
+
+### By scope
 - **Open knowledge graphs**: Wikidata, DBpedia — broad general knowledge.
 - **Domain KGs**: UniProt, Bgee, OMA — deep but narrow coverage.
 - **Enterprise KGs**: internal product/customer graphs with tighter schema governance.
@@ -38,6 +45,8 @@ In the RAG pipeline, a knowledge graph can replace or complement a [[Vector Data
 RAG systems that query knowledge graphs via generated SPARQL achieve F1 ~0.91 on bioinformatics tasks when combining retrieval of example queries + schema-aware validation. [[emonet2024sparql]]
 
 ## Related pages
+- [[RDF]]
+- [[Labeled Property Graph]]
 - [[Text-to-SPARQL]]
 - [[GraphRAG]]
 - [[Shape Expressions]]
@@ -45,3 +54,4 @@ RAG systems that query knowledge graphs via generated SPARQL achieve F1 ~0.91 on
 
 ## Sources
 - [[emonet2024sparql]]
+- [[01_Sources/web_clips/Cutting Through the Noise An Introduction to RDF & LPG Graphs]]

@@ -4,7 +4,7 @@ aliases: [vector representations, text embeddings, dense vectors]
 tags: [rag, retrieval, embedding]
 status: stub
 created: 2026-04-18
-updated: 2026-04-18
+updated: 2026-04-23
 sources: ["[[01_Sources/web_clips/embedding-models-for-rag]]", "[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]"]
 ---
 
@@ -42,6 +42,11 @@ Start small: larger embedding models are not always better on domain-specific da
 - **Cross-encoder** — jointly encodes query + document; higher accuracy but cannot be pre-computed. Used for [[Reranking]]. [[01_Sources/web_clips/embedding-models-for-rag]]
 - **Late interaction (ColBERT)** — keeps per-token embeddings, computes MaxSim at query time; balances pre-computation and expressivity. See [[ColBERT]].
 - **Sparse-dense hybrid** — combine dense embeddings with [[BM25]]-style sparse signals. See [[Hybrid Search]].
+
+### Fine-tuning
+When general-purpose embedding models underperform on domain-specific data, fine-tuning on a few thousand `(query, relevant passage)` pairs can close the gap. A second round of contrastive training on high-quality hard negatives is the standard recipe for SOTA performance. [[01_Sources/web_clips/embedding-models-for-rag]]
+
+The top MTEB model is not always the best choice: over-optimisation for academic benchmarks may not transfer to your corpus. Always evaluate on a sample of your own data before committing. [[01_Sources/web_clips/embedding-models-for-rag]]
 
 ## Trade-offs
 - ✅ Captures semantic similarity that keyword search misses (synonyms, paraphrases).

@@ -1,13 +1,17 @@
 ---
 title: "UniEval: Unified Holistic Evaluation for Unified Multimodal Understanding and Generation"
 authors: "Yi Li, Haonan Wang, Qixiang Zhang, Boyu Xiao, Chenchang Hu, Hualiang Wang, Xiaomeng Li"
+citekey: li2025unieval
+aliases: [li2025unieval]
 year: 2025
 venue: "ArXiv"
-url: "https://arxiv.org/pdf/2505.10483v1"
-tags: [paper, arxiv]
-status: to-read
+url: "https://arxiv.org/abs/2505.10483"
+tags: [paper, arxiv, evaluation, multimodal]
+status: summarized
 added_by: Pablo
 ---
+
+> **Out of scope** — UniEval targets unified multimodal understanding/generation models, not RAG pipelines. No wiki pages created. UniBench (81 fine-grained tags) and UniScore are evaluation tools for vision-language models, not retrievers or generators in the RAG sense.
 
 # UniEval: Unified Holistic Evaluation for Unified Multimodal Understanding and Generation
 
