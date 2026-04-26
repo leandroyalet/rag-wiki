@@ -1,0 +1,15 @@
+---
+title: "VERA: Validation and Evaluation of Retrieval-Augmented Systems"
+authors: "Tianyu Ding, Adi Banerjee, Laurent Mombaerts, Yunhong Li, Tarik Borogovac, Juan Pablo De la Cruz Weinstein"
+year: 2024
+venue: "ArXiv"
+url: "https://arxiv.org/pdf/2409.03759v1"
+tags: [paper, arxiv]
+status: to-read
+added_by: Pablo
+---
+
+# VERA: Validation and Evaluation of Retrieval-Augmented Systems
+
+## Resumen
+The increasing use of Retrieval-Augmented Generation (RAG) systems in various applications necessitates stringent protocols to ensure RAG systems accuracy, safety, and alignment with user intentions. In this paper, we introduce VERA (Validation and Evaluation of Retrieval-Augmented Systems), a framework designed to enhance the transparency and reliability of outputs from large language models (LLMs) that utilize retrieved information. VERA improves the way we evaluate RAG systems in two important ways: (1) it introduces a cross-encoder based mechanism that encompasses a set of multidimensional metrics into a single comprehensive ranking score, addressing the challenge of prioritizing individual metrics, and (2) it employs Bootstrap statistics on LLM-based metrics across the document repository to establish confidence bounds, ensuring the repositorys topical coverage and improving the overall reliability of retrieval systems. Through several use cases, we demonstrate how VERA can strengthen decision-making processes and trust in AI applications. Our findings not only contribute to the theoretical understanding of LLM-based RAG evaluation metric but also promote the practical implementation of responsible AI systems, marking a significant advancement in the development of reliable and transparent generative AI technologies.

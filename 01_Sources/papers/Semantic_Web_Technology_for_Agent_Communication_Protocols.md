@@ -1,0 +1,15 @@
+---
+title: "Semantic Web Technology for Agent Communication Protocols"
+authors: "Idoia Berges, Jesús Bermúdez, Alfredo Goñi, Arantza Illarramendi"
+year: 2024
+venue: "ArXiv"
+url: "https://arxiv.org/pdf/2401.11841v1"
+tags: [paper, arxiv]
+status: to-read
+added_by: Pablo
+---
+
+# Semantic Web Technology for Agent Communication Protocols
+
+## Resumen
+One relevant aspect in the development of the Semantic Web framework is the achievement of a real inter-agents communication capability at the semantic level. The agents should be able to communicate and understand each other using standard communication protocols freely, that is, without needing a laborious a priori preparation, before the communication takes place. For that setting we present in this paper a proposal that promotes to describe standard communication protocols using Semantic Web technology (specifically, OWL-DL and SWRL). Those protocols are constituted by communication acts. In our proposal those communication acts are described as terms that belong to a communication acts ontology, that we have developed, called CommOnt. The intended semantics associated to the communication acts in the ontology is expressed through social commitments that are formalized as fluents in the Event Calculus. In summary, OWL-DL reasoners and rule engines help in our proposal for reasoning about protocols. We define some comparison relationships (dealing with notions of equivalence and specialization) between protocols used by agents from different systems.
