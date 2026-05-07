@@ -1,13 +1,17 @@
 ---
 title: "Semantic Jira - Semantic Expert Finder in the Bug Tracking Tool Jira"
 authors: "Velten Heyn, Adrian Paschke"
+citekey: heyn2013semantic
+aliases: [heyn2013semantic]
 year: 2013
 venue: "ArXiv"
-url: "https://arxiv.org/pdf/1312.5150v1"
-tags: [paper, arxiv]
-status: to-read
+url: "https://arxiv.org/abs/1312.5150"
+tags: [paper, arxiv, semantic-search, enterprise-rag]
+status: summarized
 added_by: Pablo
 ---
+
+> **Early enterprise semantic retrieval example** — 2013 system that semantically searches similar Jira tickets and recommends experts + wiki knowledge links per ticket. Structurally similar to modern domain-specific RAG (semantic similarity search over a knowledge base → retrieve relevant prior knowledge → surface to user). Predates neural embeddings; uses ontology-based semantic similarity. No wiki pages created — concept already covered under [[Retrieval-Augmented Generation]] industry adoption.
 
 # Semantic Jira - Semantic Expert Finder in the Bug Tracking Tool Jira
 

@@ -1,12 +1,34 @@
 {
-  "collapse-filter": false,
+  "collapse-filter": true,
   "search": "path:02_Wiki ",
-  "showTags": true,
+  "showTags": false,
   "showAttachments": false,
   "hideUnresolved": true,
   "showOrphans": true,
-  "collapse-color-groups": true,
-  "colorGroups": [],
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:02_Wiki/concepts  ",
+      "color": {
+        "a": 1,
+        "rgb": 14701138
+      }
+    },
+    {
+      "query": "path:02_Wiki/tools  ",
+      "color": {
+        "a": 1,
+        "rgb": 14725458
+      }
+    },
+    {
+      "query": "path:02_Wiki/methods  ",
+      "color": {
+        "a": 1,
+        "rgb": 7426784
+      }
+    }
+  ],
   "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": 0,
@@ -17,6 +39,6 @@
   "repelStrength": 12.53125,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.25193570382731606,
+  "scale": 0.7377879464668785,
   "close": true
 }

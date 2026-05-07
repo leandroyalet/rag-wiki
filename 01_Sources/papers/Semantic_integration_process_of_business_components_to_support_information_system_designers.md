@@ -1,13 +1,17 @@
 ---
 title: "Semantic integration process of business components to support information system designers"
 authors: "Hicham Elasri, Abderrahim Sekkaki"
+citekey: elasri2013semantic
+aliases: [elasri2013semantic]
 year: 2013
 venue: "ArXiv"
-url: "https://arxiv.org/pdf/1302.1393v1"
-tags: [paper, arxiv]
-status: to-read
+url: "https://arxiv.org/abs/1302.1393"
+tags: [paper, arxiv, semantic-web, ontology-alignment]
+status: summarized
 added_by: Pablo
 ---
+
+> **Limited relevance** — 2013 paper on domain ontology-guided integration of business components and semantic conflict resolution (naming conflicts). Predates modern RAG by ~7 years. The ontology alignment approach (detecting and resolving semantic conflicts between components) is conceptually relevant to knowledge graph construction but not cited in any wiki page. No wiki pages created.
 
 # Semantic integration process of business components to support information system designers
 

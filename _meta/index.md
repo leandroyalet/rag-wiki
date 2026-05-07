@@ -1,7 +1,7 @@
 ---
 type: meta
 tags: [index, map-of-content]
-updated: 2026-04-26
+updated: 2026-05-07
 ---
 
 # Index — Entry map to the RAG wiki
@@ -59,11 +59,12 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 - [[E5]] — Microsoft's family of text embedding models trained with weakly-supervised contrastive learning on large web text pairs — strong across MTEB tasks, especially retrieval.
 - [[Sentence-BERT]] — The 2019 model that made BERT usable for semantic similarity at scale — a siamese bi-encoder that pools BERT into fixed-length sentence vectors, enabling cosine-similarity search without expensive pairwise inference.
 
-### Benchmarks & Evaluation (4)
+### Benchmarks & Evaluation (5)
 
 - [[BEIR]] — A heterogeneous retrieval benchmark covering 18 datasets across 9 diverse domains — the standard zero-shot transfer test for dense and sparse retrieval models.
 - [[IRPAPERS]] — A 3,230-page visual benchmark of IR scientific papers comparing image- and text-based retrieval and QA, with the key finding that neither modality dominates and multimodal fusion gives the best results.
 - [[KILT]] — A unified benchmark covering 11 knowledge-intensive NLP tasks — QA, slot filling, fact-checking, dialogue, and entity linking — all grounded against the same Wikipedia snapshot.
+- [[MME]] — The first comprehensive evaluation benchmark for Multimodal LLMs — 14 subtasks across perception and cognition, manually annotated to prevent data leakage, with a binary yes/no instruction format that enables clean quantitative comparison.
 - [[MTEB]] — The standard leaderboard for text embedding models — 8 task types, 181 datasets, evaluated on NDCG@10 for retrieval — the first stop when choosing an embedding model for RAG.
 
 ### Infrastructure & Tools (16)
@@ -79,7 +80,7 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 
 **Frameworks & orchestration**
 - [[BeyondLLM]] — Lightweight open-source Python framework by AI Planet for building and evaluating RAG pipelines with HuggingFace models in a few lines of code — includes built-in RAG Triad evaluation.
-- [[Haystack]] — Open-source AI orchestration framework by deepset built around composable, serializable pipelines of typed components — designed for production RAG, agentic loops, and multi-modal applications.
+- [[Haystack]] — Open-source AI orchestration framework by deepset built around composable, serializable pipelines of typed components — designed for production RAG, agentic loops, and multi-modal applications with full transparency into every processing step.
 - [[LangChain]] — The most widely adopted open-source LLM framework — provides a composable expression language (LCEL) for chains and agents, with 500+ integrations and a large community ecosystem.
 - [[LlamaIndex]] — Python/TypeScript framework purpose-built for LLM-powered data retrieval — excels at data connectors, flexible index types, and composable query engines over private documents and databases.
 

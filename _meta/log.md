@@ -171,6 +171,28 @@ Format:
 - **files touched**: `_meta/index.md`
 - **notes**: 46 pages indexed across 5 sections — Concepts (17), Methods (8), Models (4), Benchmarks (4), Tools (13); tools sub-grouped into vector stores / frameworks / parsing / evaluation
 
+## 2026-05-07 — Claude Code (/update-index)
+- **operation**: update-index
+- **files touched**: `_meta/index.md`
+- **notes**: 57 pages indexed across 5 sections — Concepts (20), Methods (12), Models (4), Benchmarks (5), Tools (16); MME added to benchmarks
+
+## 2026-05-07 — Claude Code (/ingest)
+- **operation**: ingest (4 papers)
+- **source**: `MME_...md` (fu2023mme), `Semantic_Web_Technology_for_Agent_Communication_Protocols.md` (berges2024commOnt), `Semantic_integration_process_...md` (elasri2013semantic), `Semantic_Jira_...md` (heyn2013semantic)
+- **files touched**:
+  - `01_Sources/papers/MME_...md` (summarized — citekey fu2023mme, 14 subtasks, 4 failure modes)
+  - `01_Sources/papers/Semantic_Web_Technology_...md` (summarized — citekey berges2024commOnt, OWL-DL/SWRL/CommOnt)
+  - `01_Sources/papers/Semantic_integration_process_...md` (summarized — citekey elasri2013semantic, limited relevance noted)
+  - `01_Sources/papers/Semantic_Jira_...md` (summarized — citekey heyn2013semantic, early enterprise semantic retrieval)
+  - `02_Wiki/benchmarks/MME.md` (new — 14-subtask table, ACC/ACC+ scoring, 4 failure modes, RAG relevance)
+  - `02_Wiki/concepts/RDF.md` (updated — OWL/SWRL agentic reasoning section from berges2024commOnt)
+- **notes**: MME is a genuine multimodal eval benchmark relevant to visual RAG and hallucination measurement; berges2024commOnt extends the OWL/SWRL row in RDF.md with an agentic use case; the two 2013 papers (elasri, heyn) predate modern RAG and contribute no new wiki pages; all 4 papers now summarized — 01_Sources/papers inbox is fully cleared
+
+## 2026-05-07 — Claude Code (/update-index)
+- **operation**: update-index
+- **files touched**: `_meta/index.md`
+- **notes**: 56 pages indexed across 5 sections — Concepts (20), Methods (12), Models (4), Benchmarks (4), Tools (16); no new pages since 2026-04-26
+
 ## 2026-04-26 — Claude Code (/update-index)
 - **operation**: update-index
 - **files touched**: `_meta/index.md`
@@ -234,3 +256,8 @@ Format:
   - `02_Wiki/tools/Pinecone.md` (filled)
   - `02_Wiki/tools/Weaviate.md` (filled)
 - **notes**: HyDE.md already had body content so counted as resolved; all 12 stubs now have full content; sources remain [!todo] for tool/model pages with no corresponding 01_Sources/ papers
+
+## 2026-05-07 — Claude Code (/lint-wiki)
+- **operation**: lint-wiki
+- **files touched**: `_meta/lint-2026-05-07.md` (new)
+- **notes**: 22 issues total — 4 broken links (RRF ×2, RAG Triad ×2, MLflow ×1, karpukhin reading-list ×1), 0 orphans, 0 missing frontmatter, 0 empty stubs, 0 duplicates, 3 wanted pages (RRF, RAG Triad, MLflow), 1 pre-existing contradiction (C1), 17 uncited tool/concept pages

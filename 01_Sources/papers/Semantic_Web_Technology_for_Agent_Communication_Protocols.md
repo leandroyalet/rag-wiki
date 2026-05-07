@@ -1,13 +1,28 @@
 ---
 title: "Semantic Web Technology for Agent Communication Protocols"
 authors: "Idoia Berges, Jesús Bermúdez, Alfredo Goñi, Arantza Illarramendi"
+citekey: berges2024commOnt
+aliases: [berges2024commOnt]
 year: 2024
 venue: "ArXiv"
-url: "https://arxiv.org/pdf/2401.11841v1"
-tags: [paper, arxiv]
-status: to-read
+url: "https://arxiv.org/abs/2401.11841"
+tags: [paper, arxiv, semantic-web, owl, agents]
+status: summarized
 added_by: Pablo
 ---
+
+# Semantic Web Technology for Agent Communication Protocols
+
+## Summary
+Proposes a framework for semantic interoperability between autonomous agents using OWL-DL, SWRL, and Event Calculus. Demonstrates that OWL/SWRL is sufficient to reason about complex inter-agent communication without pre-negotiation.
+
+**Key stack:**
+- **OWL-DL** — formally describes communication protocols and their constituent acts.
+- **SWRL** — rule-based reasoning for protocol interpretation.
+- **Event Calculus** — formalises the intended semantics of communication acts as social commitments (fluents).
+- **CommOnt** — the paper's custom communication acts ontology.
+
+**RAG relevance:** Illustrates the reasoning power of OWL-DL + SWRL in agentic settings. In agentic RAG, agents need to communicate and coordinate; formal ontology-backed protocols can reduce ambiguity. Also extends the OWL row in the RDF stack table (see [[RDF]]).
 
 # Semantic Web Technology for Agent Communication Protocols
 

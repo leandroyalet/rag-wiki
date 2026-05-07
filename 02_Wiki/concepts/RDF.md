@@ -5,7 +5,7 @@ tags: [rag, knowledge-graph, semantic-web, retrieval]
 status: stub
 created: 2026-04-23
 updated: 2026-04-23
-sources: ["[[01_Sources/web_clips/Cutting Through the Noise An Introduction to RDF & LPG Graphs]]"]
+sources: ["[[01_Sources/web_clips/Cutting Through the Noise An Introduction to RDF & LPG Graphs]]", "[[berges2024commOnt]]"]
 ---
 
 # RDF
@@ -29,6 +29,9 @@ In RAG, RDF graphs serve as structured knowledge sources alongside or instead of
 | **SPARQL** | Query language — pattern matching over triples |
 | **SHACL** | Constraint language — validates data against a shape |
 | **ShEx** | Alternative shape/validation language (see [[Shape Expressions]]) |
+
+### OWL and SWRL in agentic settings
+OWL-DL + SWRL rules are sufficient to reason about complex inter-agent communication protocols without prior negotiation. [[berges2024commOnt]] demonstrates this via the CommOnt ontology — communication acts are described as OWL-DL classes; SWRL rules derive protocol equivalence and specialisation relationships; Event Calculus formalises the intended semantics as social commitments. In agentic RAG pipelines, this approach shows how shared ontologies can enable agents to communicate and coordinate with formal semantic grounding rather than ad-hoc schema matching.
 
 ### Key properties
 - **Self-describing**: data and data model coexist in the same graph.
@@ -58,3 +61,4 @@ RDF emphasises **semantic correctness, interoperability, and reasoning**. [[Labe
 
 ## Sources
 - [[01_Sources/web_clips/Cutting Through the Noise An Introduction to RDF & LPG Graphs]]
+- [[berges2024commOnt]]
