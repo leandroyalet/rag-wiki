@@ -4,8 +4,8 @@ aliases: [vector representations, text embeddings, dense vectors]
 tags: [rag, retrieval, embedding]
 status: stub
 created: 2026-04-18
-updated: 2026-04-23
-sources: ["[[01_Sources/web_clips/embedding-models-for-rag]]", "[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]"]
+updated: 2026-05-08
+sources: ["[[01_Sources/web_clips/embedding-models-for-rag]]", "[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]", "[[kumar2026sts]]"]
 ---
 
 # Embeddings
@@ -48,6 +48,20 @@ When general-purpose embedding models underperform on domain-specific data, fine
 
 The top MTEB model is not always the best choice: over-optimisation for academic benchmarks may not transfer to your corpus. Always evaluate on a sample of your own data before committing. [[01_Sources/web_clips/embedding-models-for-rag]]
 
+## State of the art in semantic similarity
+A 2026 survey ([[kumar2026sts]]) maps six active research streams in Semantic Textual Similarity — the task that embedding models are most directly trained and evaluated on:
+
+| Stream | Representative models | Notes |
+|---|---|---|
+| Transformer architectures | FarSSiBERT, DeBERTa-v3 | Strong general-purpose baselines |
+| Contrastive learning | AspectCSE | Defines SOTA on many STS benchmarks |
+| Domain-specific | CXR-BERT (medical), Financial-STS | Domain adaptation consistently closes the gap to general models |
+| Multi-modal | — | Emerging; image-text similarity for visual RAG |
+| Graph-based | — | Incorporates structured knowledge into similarity scoring |
+| Knowledge-enhanced | — | External KG signals improve low-resource STS |
+
+Domain adaptation is the single most reliable lever for improving embedding quality on a specialized corpus — outperforms scaling up to a larger general model. [[kumar2026sts]]
+
 ## Trade-offs
 - ✅ Captures semantic similarity that keyword search misses (synonyms, paraphrases).
 - ✅ Domain-agnostic at inference; specialization comes from fine-tuning.
@@ -71,3 +85,4 @@ The top MTEB model is not always the best choice: over-optimisation for academic
 ## Sources
 - [[01_Sources/web_clips/embedding-models-for-rag]]
 - [[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]
+- [[kumar2026sts]]

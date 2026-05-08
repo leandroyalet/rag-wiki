@@ -4,8 +4,8 @@ aliases: [[[BM25]], TF-IDF, lexical retrieval, keyword search]
 tags: [rag, retrieval]
 status: stub
 created: 2026-04-18
-updated: 2026-04-18
-sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]"]
+updated: 2026-05-08
+sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]", "[[01_Sources/web_clips/sbert-net-sentence-transformers-library]]"]
 ---
 
 # Sparse Retrieval
@@ -34,8 +34,28 @@ No GPU is required; [[BM25]] runs efficiently on CPU with standard search librar
 ## Variants
 - **[[BM25]]** — the standard; used in virtually all modern hybrid baselines.
 - **TF-IDF** — simpler ancestor of [[BM25]]; no length normalization saturation.
-- **SPLADE** — learned sparse model that expands query and document tokens using an LM; bridges sparse and dense worlds.
+- **SPLADE** — learned sparse model; see below.
 - **uniCOIL** — per-token learned weights on a sparse [[BM25]]-like representation.
+
+## SPLADE — learned sparse retrieval
+
+SPLADE (Sparse Lexical and Expansion model) uses a masked language model to assign a relevance score to every vocabulary token for a given input, producing a vocabulary-sized vector (e.g., 30,522 dimensions for BERT's tokenizer) where >99% of values are zero. Non-zero dimensions correspond to specific tokens — making the representation interpretable and compatible with standard inverted-index infrastructure. [[01_Sources/web_clips/sbert-net-sentence-transformers-library]]
+
+Key properties:
+- **Learned expansion**: the LM infers which related terms should also be active (e.g., "car" also activates "vehicle", "automobile") — closing the vocabulary-mismatch gap that BM25 cannot.
+- **~30–100 active dimensions** per embedding in practice; the rest are exactly zero.
+- **Asymmetric encoding**: separate `encode_query()` and `encode_document()` calls apply different prompts, mirroring the dense bi-encoder pattern.
+
+```python
+from sentence_transformers import SparseEncoder
+
+model = SparseEncoder("naver/splade-cocondenser-ensembledistil")
+query_emb = model.encode_query("What causes hallucination in RAG?")
+doc_emb = model.encode_document("Hallucination occurs when retrieved context is missing...")
+# Both are sparse vectors; similarity = dot product over shared non-zero dimensions
+```
+
+SPLADE is served through the `sentence-transformers` library as the `SparseEncoder` class and slots naturally into [[Hybrid Search]] pipelines alongside a dense [[Embeddings|bi-encoder]]. [[01_Sources/web_clips/sbert-net-sentence-transformers-library]]
 
 ## Trade-offs
 - ✅ Exact keyword match — catches rare terms that dense models miss.
@@ -54,3 +74,4 @@ No GPU is required; [[BM25]] runs efficiently on CPU with standard search librar
 
 ## Sources
 - [[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]
+- [[01_Sources/web_clips/sbert-net-sentence-transformers-library]]

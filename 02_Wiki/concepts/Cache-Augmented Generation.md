@@ -5,7 +5,7 @@ tags: [rag, context-window, caching, generation]
 status: stub
 created: 2026-04-19
 updated: 2026-04-19
-sources: ["[[agrawal2025cag]]"]
+sources: ["[[agrawal2025cag]]", "[[zhang2025rlm]]"]
 ---
 
 # Cache-Augmented Generation
@@ -57,6 +57,9 @@ ACC-CAG vs. Dense RAG on HotpotQA: BERTScore 0.805 vs. 0.754 at 640 ms vs. 1,020
 - **Lost-in-the-middle**: transformer attention degrades for mid-context facts. [[agrawal2025cag]]
 - **Cache staleness**: knowledge updates require full or partial cache reconstruction. [[agrawal2025cag]]
 - **Window ceiling**: even with ACC, multi-million-document corpora require segmented loading. [[agrawal2025cag]]
+
+## Alternatives to RAG/CAG for long documents
+**Recursive Language Models (RLMs)** [[zhang2025rlm]] take a different approach: rather than retrieving chunks (RAG) or compressing a knowledge snapshot into context (CAG), the model programmatically decomposes long inputs and recursively calls itself over sub-segments. RLM-Qwen3-8B processes inputs 100× beyond its native context window with a 28.3% improvement over its base model and no external index required. The trade-off is that all content must be available at inference time (no dynamic retrieval), making RLMs complementary to CAG rather than a full replacement.
 
 ## Related pages
 - [[Retrieval-Augmented Generation]]

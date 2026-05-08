@@ -257,7 +257,117 @@ Format:
   - `02_Wiki/tools/Weaviate.md` (filled)
 - **notes**: HyDE.md already had body content so counted as resolved; all 12 stubs now have full content; sources remain [!todo] for tool/model pages with no corresponding 01_Sources/ papers
 
+## 2026-05-08 — Claude Code (/ingest)
+- **operation**: ingest — pypi.org/project/unstructured/ (Unstructured document processing library)
+- **source**: https://pypi.org/project/unstructured/, https://docs.unstructured.io, https://github.com/Unstructured-IO/unstructured
+- **files touched**:
+  - `02_Wiki/tools/Unstructured.md` (new — typed element model, partitioning strategies, chunking, 20+ connectors, LangChain/LlamaIndex integration)
+- **notes**: Unstructured is the most widely-adopted open-source ingestion layer for RAG; key differentiator is typed semantic element objects (Title, NarrativeText, Table) enabling structure-aware chunking; heavy system deps (libreoffice, poppler, tesseract); Apache-2.0; 14.7k stars
+
+## 2026-05-08 — Claude Code (/update-index)
+- **operation**: update-index
+- **files touched**: `_meta/index.md`
+- **notes**: 60 pages indexed across 5 sections — Concepts (20), Methods (12), Models (4), Benchmarks (5), Tools (19); Unstructured added to Document parsing & ingestion
+
+## 2026-05-08 — Claude Code (/ingest)
+- **operation**: ingest — kreuzberg.dev (Kreuzberg document extraction library)
+- **source**: https://kreuzberg.dev, https://github.com/Goldziher/kreuzberg, https://pypi.org/project/kreuzberg/
+- **files touched**:
+  - `02_Wiki/tools/Kreuzberg.md` (new — Rust-core extraction, 91+ formats, code intelligence, TOON wire format, ELv2 license)
+- **notes**: Kreuzberg is a document parsing/ingestion tool comparable to Docling and MarkItDown but with a Rust core, 10+ language bindings, code intelligence via tree-sitter, and a token-efficient TOON output format; ELv2 license is a key constraint vs MIT alternatives
+
+## 2026-05-08 — Claude Code (/update-index)
+- **operation**: update-index
+- **files touched**: `_meta/index.md`
+- **notes**: 59 pages indexed across 5 sections — Concepts (20), Methods (12), Models (4), Benchmarks (5), Tools (18); Kreuzberg added to Document parsing & ingestion
+
+## 2026-05-08 — Claude Code (/ingest)
+- **operation**: ingest — python.useinstructor.com (Instructor library)
+- **source**: https://python.useinstructor.com (homepage + /concepts/patching/ + /concepts/retrying/)
+- **files touched**:
+  - `02_Wiki/tools/Instructor.md` (new — structured output library, Pydantic-based, 15+ providers, retry-with-feedback)
+- **notes**: Instructor is a structured-output extraction layer for LLM pipelines — not a RAG framework itself but relevant as the generation output contract layer; 3M+ monthly downloads, 11k stars
+
+## 2026-05-08 — Claude Code (/update-index)
+- **operation**: update-index
+- **files touched**: `_meta/index.md`
+- **notes**: 58 pages indexed across 5 sections — Concepts (20), Methods (12), Models (4), Benchmarks (5), Tools (17); Instructor added to Frameworks & orchestration
+
+## 2026-05-08 — Claude Code (/ingest-url)
+- **operation**: ingest-url
+- **source**: https://sbert.net/index.html + https://sbert.net/docs/sparse_encoder/usage/usage.html
+- **clip saved**: `01_Sources/web_clips/sbert-net-sentence-transformers-library.md`
+- **files touched**:
+  - `02_Wiki/concepts/Sparse Retrieval.md` (updated — SPLADE section expanded: vocabulary-sized vectors, >99% sparsity, learned token expansion, code example, sbert SparseEncoder class)
+  - `02_Wiki/models/Sentence-BERT.md` (updated — 3-class library architecture table: SentenceTransformer / CrossEncoder / SparseEncoder; 10k+ models, HF maintenance)
+  - `02_Wiki/methods/Hybrid Search.md` (updated — SPLADE as learned sparse signal section added)
+- **notes**: Main novel content is SPLADE / SparseEncoder as a third model type in sentence-transformers alongside dense and reranker; bridges BM25 and dense by adding learned term expansion while staying inverted-index compatible
+
+## 2026-05-08 — Claude Code (/ingest-url)
+- **operation**: ingest-url
+- **source**: https://huggingface.co/blog/multimodal-sentence-transformers
+- **clip saved**: `01_Sources/web_clips/aarsen-2026-multimodal-sentence-transformers.md`
+- **files touched**:
+  - `02_Wiki/concepts/Multimodal Embeddings.md` (new — shared embedding space, modality gap, model table, retrieve+rerank pipeline)
+  - `02_Wiki/models/BGE.md` (updated — BGE-VL multimodal variant table added)
+  - `02_Wiki/models/Sentence-BERT.md` (updated — sentence-transformers v5.4 multimodal extension note)
+  - `02_Wiki/methods/Reranking.md` (updated — multimodal reranking section with CrossEncoder API example)
+  - `_meta/index.md` (updated — Multimodal Embeddings added, Concepts 21→22)
+- **notes**: Key new concept is the modality gap (cross-modal cosine scores are lower than within-modal but ordering preserved); Sentence Transformers v5.4 unifies text, image, audio, video under one API; BGE-VL adds 6 multimodal variants to the BGE family
+
+## 2026-05-08 — Claude Code (/ingest)
+- **operation**: ingest (7 remaining papers — batch 2)
+- **source**: 2507.07548 (ullrich2025requirements), 2507.18910 (oche2025ragsurvey), 2512.24601 (zhang2025rlm), 2601.03270 (kumar2026sts), 2601.05264 (wampler2025ragstack duplicate), 2602.17687 (shorten2026irpapers), Semantic_Annotation_pdf (nithya2014semantic)
+- **files touched**:
+  - `01_Sources/papers/ullrich2025requirements.md` (new — out of scope, no wiki pages)
+  - `01_Sources/papers/zhang2025rlm.md` (new — Recursive LMs, alternative to RAG/CAG for long-context)
+  - `01_Sources/papers/kumar2026sts.md` (new — STS survey, 6 research streams)
+  - `01_Sources/papers/nithya2014semantic.md` (new — out of scope, 2014 Linked Data paper)
+  - `01_Sources/papers/oche2025ragsurvey.md` (already existed — verified complete)
+  - `01_Sources/papers/shorten2026irpapers.md` (already existed — verified complete)
+  - `02_Wiki/concepts/Embeddings.md` (updated — STS state-of-art table from kumar2026sts, 6 research streams)
+  - `02_Wiki/concepts/Cache-Augmented Generation.md` (updated — RLM as alternative long-context approach, zhang2025rlm)
+- **notes**: 2601.05264 PDF is a duplicate of existing Engineering_the_RAG_Stack_...md (wampler2025ragstack) — same authors, title, arXiv ID; no new note created. ullrich2025requirements and nithya2014semantic are off-topic. All 15 unprocessed PDFs now have literature notes. 01_Sources/papers inbox fully cleared.
+
+## 2026-05-08 — Claude Code (/ingest)
+- **operation**: ingest (8 papers — batch 1 of remaining PDFs)
+- **source**: 2210.07316 (muennighoff2022mteb), 2309.12697 (herbold2023stscore), 2401.05856 (barnett2024failures), 2410.06062 (emonet2024sparql), 2410.08801 (simon2024rageval), 2505.08261 (agrawal2025cag), 2505.18906 (chakraborty2025fedrag), 2506.07042 (chatzikyriakidis2025ragcoq)
+- **files touched**:
+  - `01_Sources/papers/muennighoff2022mteb.md` (new)
+  - `01_Sources/papers/herbold2023stscore.md` (new)
+  - `01_Sources/papers/simon2024rageval.md` (new)
+  - `01_Sources/papers/chakraborty2025fedrag.md` (new)
+  - `01_Sources/papers/chatzikyriakidis2025ragcoq.md` (new)
+  - `01_Sources/papers/barnett2024failures.md` (already existed — verified complete)
+  - `01_Sources/papers/emonet2024sparql.md` (already existed — verified complete)
+  - `01_Sources/papers/agrawal2025cag.md` (already existed — verified complete)
+  - `02_Wiki/benchmarks/MTEB.md` (updated — muennighoff2022mteb citation, 33 models/58 datasets/112 lang finding, STSScore caveat)
+  - `02_Wiki/concepts/RAG Failure Points.md` (updated — simon2024rageval evaluation blueprint section)
+  - `02_Wiki/concepts/RDF.md` (updated — chatzikyriakidis2025ragcoq RDF→Coq proof-assistant section)
+  - `02_Wiki/concepts/Federated RAG.md` (new stub — FL+RAG architecture, 3 open challenges)
+  - `_meta/index.md` (updated — Federated RAG added, Concepts count 20→21)
+- **notes**: barnett2024failures/emonet2024sparql/agrawal2025cag literature notes already existed from prior sessions; herbold2023stscore (STSScore) added as evaluation caveat to MTEB; chatzikyriakidis2025ragcoq adds a formal-reasoning application of RDF (RDF→Coq); Federated RAG is a genuine emerging subfield warranting its own stub
+
 ## 2026-05-07 — Claude Code (/lint-wiki)
 - **operation**: lint-wiki
 - **files touched**: `_meta/lint-2026-05-07.md` (new)
 - **notes**: 22 issues total — 4 broken links (RRF ×2, RAG Triad ×2, MLflow ×1, karpukhin reading-list ×1), 0 orphans, 0 missing frontmatter, 0 empty stubs, 0 duplicates, 3 wanted pages (RRF, RAG Triad, MLflow), 1 pre-existing contradiction (C1), 17 uncited tool/concept pages
+
+## 2026-05-08 — Claude Code (fix broken wikilinks)
+- **operation**: fix broken wikilinks (from lint-2026-05-07 report)
+- **files touched**:
+  - `02_Wiki/methods/Reciprocal Rank Fusion.md` (new stub — RRF algorithm, k≈60 constant, use in Hybrid Search / RAG-Fusion)
+  - `02_Wiki/concepts/RAG Triad.md` (new stub — three-metric framework: Context Relevance, Groundedness, Answer Relevance)
+  - `02_Wiki/tools/MLflow.md` (new stub — MLOps platform, LLM eval via mlflow.evaluate(), TruLens integration)
+  - `_meta/index.md` (updated — Concepts 22→23, Methods 12→13, Tools 19→20)
+- **notes**: resolves 4 broken wikilinks and 3 wanted-page issues from lint report; 17 uncited tool pages remain (acceptable — no academic sources)
+
+## 2026-05-08 — Claude Code (/update-index)
+- **operation**: update-index
+- **files touched**: `_meta/index.md`
+- **notes**: 65 pages indexed — Concepts (23), Methods (13), Models (4), Benchmarks (5), Tools (20); TL;DRs refreshed from source files (KILT, E5, Federated RAG updated); Tools subcategorised as Vector stores (4), Graph databases (1), Frameworks (5), Document parsing (4), Evaluation (6)
+
+## 2026-05-08 — Claude Code (/lint-wiki)
+- **operation**: lint-wiki
+- **files touched**: `_meta/lint-2026-05-08.md` (new)
+- **notes**: 42 issues total — 11 broken links (1 format mismatch in BM25.md, 1 fully missing berges2024commOnt, 9 citekey-mismatch lit notes with long filenames), 5 orphan pages (BeyondLLM/Federated RAG/Instructor/Unstructured/VERA), 0 missing frontmatter, 0 empty stubs, 0 duplicates, 2 wanted items (berges lit note + unread clip), 1 pre-existing contradiction (C1 open), 23 uncited pages (16 tool pages acceptable, 7 concept/method pages flagged)

@@ -5,7 +5,7 @@ tags: [rag, retrieval, hybrid-search]
 status: stub
 created: 2026-04-18
 updated: 2026-04-18
-sources: ["[[01_Sources/web_clips/Contextual Retrieval in AI Systems]]", "[[01_Sources/web_clips/How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI]]"]
+sources: ["[[01_Sources/web_clips/Contextual Retrieval in AI Systems]]", "[[01_Sources/web_clips/How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI]]", "[[01_Sources/web_clips/sbert-net-sentence-transformers-library]]"]
 introduced_by: 
 year: 
 ---
@@ -37,6 +37,11 @@ with `k ≈ 60`. RRF ignores raw scores and uses only rankings, which makes it r
 - [[Weaviate]] — native hybrid search.
 - [[Qdrant]] — sparse + dense vectors.
 - [[Pinecone]] — hybrid with sparse-dense vectors.
+
+## SPLADE as a learned sparse signal
+Beyond BM25, **SPLADE** (Sparse Lexical and Expansion model) is a drop-in learned sparse retriever that closes the vocabulary-mismatch gap: it activates related vocabulary tokens not present in the raw text (e.g., "car" activates "vehicle"). A SPLADE + dense hybrid therefore covers both exact keyword matching and semantic paraphrase matching better than BM25 + dense alone. [[01_Sources/web_clips/sbert-net-sentence-transformers-library]]
+
+SPLADE vectors are vocabulary-sized and >99% sparse, making them compatible with the same inverted-index infrastructure as BM25. Served via `sentence-transformers` as `SparseEncoder("naver/splade-cocondenser-ensembledistil")`. See [[Sparse Retrieval]] for details.
 
 ## Contextual BM25
 [[Contextual Retrieval]] (Anthropic, 2024) extends standard hybrid search by prepending an LLM-generated context blurb to each chunk *before* building the BM25 index. This makes the BM25 index aware of document-level context (entity names, dates, section headings) that the raw chunk text omits. [[01_Sources/web_clips/Contextual Retrieval in AI Systems]]

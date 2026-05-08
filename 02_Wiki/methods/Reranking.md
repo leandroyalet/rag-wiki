@@ -49,6 +49,22 @@ Reranking improves *both* dimensions simultaneously [[01_Sources/web_clips/How t
 ### LLM verification (alternative/complement)
 A simpler precision filter: pass each retrieved chunk through an LLM judge that classifies it as relevant or not. Keeps only positively-classified chunks. Trade-off: higher cost and added latency per query. [[01_Sources/web_clips/How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI]]
 
+## Multimodal reranking
+As of 2026, cross-encoder reranking extends to mixed-modality inputs — a text query can be ranked against image, text, or combined (text + image) documents within a single `rank()` call. This is the precision stage of a visual document RAG pipeline: [[01_Sources/web_clips/aarsen-2026-multimodal-sentence-transformers]]
+
+```python
+from sentence_transformers import CrossEncoder
+
+model = CrossEncoder("Qwen/Qwen3-VL-Reranker-2B")
+rankings = model.rank("revenue growth chart", [
+    "path/to/slide_revenue.png",          # image
+    "Annual revenue grew 14% in Q3.",     # text
+    {"text": "Q3 results", "image": "path/to/chart.png"},  # combined
+])
+```
+
+Key multimodal rerankers: **Qwen3-VL-Reranker-2B/8B** (text, image, video), **nvidia/llama-nemotron-rerank-vl-1b-v2** (text, image), **jinaai/jina-reranker-m0** (text, image). [[01_Sources/web_clips/aarsen-2026-multimodal-sentence-transformers]]
+
 ## When to use / when not to
 - ✅ Retrieval precision is the bottleneck — top-k from the bi-encoder is noisy.
 - ✅ Context window is tight — fewer, better chunks are worth the latency.
@@ -65,3 +81,4 @@ A simpler precision filter: pass each retrieved chunk through an LLM judge that 
 ## Sources
 - [[01_Sources/web_clips/embedding-models-for-rag]]
 - [[oche2025ragsurvey]]
+- [[01_Sources/web_clips/aarsen-2026-multimodal-sentence-transformers]]

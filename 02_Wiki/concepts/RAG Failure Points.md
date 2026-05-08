@@ -5,7 +5,7 @@ tags: [rag, engineering, evaluation, quality]
 status: stub
 created: 2026-04-19
 updated: 2026-04-19
-sources: ["[[barnett2024failures]]", "[[brehme2025ragindustry]]"]
+sources: ["[[barnett2024failures]]", "[[brehme2025ragindustry]]", "[[simon2024rageval]]"]
 ---
 
 # RAG Failure Points
@@ -51,6 +51,9 @@ Robustness evolves at runtime rather than being designed upfront — implying co
 ## Industry perspective
 [[brehme2025ragindustry]] (13-practitioner interview study) identifies **data preprocessing** as the most commonly cited operational challenge in production RAG — cleaning, formatting, and normalising source documents before indexing. This is a pre-FP1 failure mode: if raw documents are noisy or poorly structured, the knowledge base is incomplete regardless of retrieval quality, directly causing FP1 (missing content) and FP2 (wrong chunks ranked). Industry evaluation of failure points is still predominantly human-conducted rather than automated. [[brehme2025ragindustry]]
 
+## Evaluation methodology
+[[simon2024rageval]] proposes a reusable evaluation blueprint for RAG systems with three principles: (1) careful baseline and metric selection, (2) systematic refinements guided by qualitative failure analysis of the failure points, and (3) transparent reporting of design decisions for replication. Applied empirically to software configuration dependency validation, the methodology produced the highest accuracy in that field — validating FP-driven iterative refinement as an effective engineering strategy. [[simon2024rageval]]
+
 ## Relation to other evaluation frameworks
 - [[RAGAS]] and [[DeepEval]] metrics map onto FP2 (Context Relevance/Precision), FP1 + FP4 (Faithfulness), and FP6 + FP7 (Answer Relevance).
 - [[Hallucination in RAG]] covers FP1 and FP4 specifically.
@@ -68,3 +71,4 @@ Robustness evolves at runtime rather than being designed upfront — implying co
 
 ## Sources
 - [[barnett2024failures]]
+- [[simon2024rageval]]

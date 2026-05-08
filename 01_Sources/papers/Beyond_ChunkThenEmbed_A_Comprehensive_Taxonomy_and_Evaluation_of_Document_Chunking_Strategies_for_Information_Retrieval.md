@@ -17,7 +17,7 @@ added_by: Pablo
 Systematic reproduction and unified taxonomy of chunking strategies along two dimensions.
 
 **Taxonomy dimensions:**
-1. **Segmentation method** — fixed-size, sentence, paragraph (structure-based); semantic similarity split; DenseX (proposition-based via LLM); LumberChunker (LLM topic-shift detection).
+1. **Segmentation method** — fixed-size, sentence, paragraph (structure-based); |semantic similarity split; DenseX (proposition-based via LLM); LumberChunker (LLM topic-shift detection).
 2. **Embedding timing** — *pre-embedding chunking* (segment first, embed each chunk independently) vs. *contextualized chunking / Late Chunking* (embed full document with long-context model, then segment token-level embeddings).
 
 **Key methods:**

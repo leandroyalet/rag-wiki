@@ -4,8 +4,8 @@ aliases: [Massive Text Embedding Benchmark]
 tags: [benchmark, embedding, retrieval, eval]
 status: stub
 created: 2026-04-18
-updated: 2026-04-23
-sources: ["[[01_Sources/web_clips/embedding-models-for-rag]]"]
+updated: 2026-05-08
+sources: ["[[01_Sources/web_clips/embedding-models-for-rag]]", "[[muennighoff2022mteb]]"]
 homepage: https://huggingface.co/spaces/mteb/leaderboard
 repo: https://github.com/embeddings-benchmark/mteb
 docs: https://huggingface.co/spaces/mteb/leaderboard
@@ -18,6 +18,8 @@ year: 2022
 
 ## What it measures
 MTEB (Massive Text Embedding Benchmark) evaluates text embeddings across the full range of downstream uses, not just retrieval. For RAG, the **Retrieval** tab is most relevant: it measures how well embeddings find the correct passage for a query, scored with NDCG@10.
+
+The original paper benchmarked **33 models** across **58 datasets** in **112 languages** and found that no single text embedding method dominates across all tasks — a result that motivates domain-specific model selection rather than relying on the overall leaderboard score. [[muennighoff2022mteb]]
 
 The benchmark exposes trade-offs between model size, language coverage, and task-specific performance — a model topping the overall leaderboard may underperform a smaller model on your specific domain. [[01_Sources/web_clips/embedding-models-for-rag]]
 
@@ -76,10 +78,12 @@ Domain-specific datasets (medical, financial, legal) reward specialists over gen
 - General leaderboard score hides domain-specific variation.
 - Does not evaluate [[Reranking]] quality or end-to-end RAG pipeline performance.
 - No visual or multimodal retrieval — see [[IRPAPERS]] for that.
+- The STS task measures cosine similarity between bi-encoder embeddings — [[herbold2023stscore]] shows that direct similarity *prediction* from a fine-tuned cross-encoder is more robust for evaluation purposes than cosine distance, suggesting STS MTEB scores may slightly overestimate real-world embedding quality for similarity judgement tasks.
 
 ## Related benchmarks
 - [[BEIR]] — MTEB's Retrieval tab is largely a superset of BEIR datasets.
 - [[IRPAPERS]] — extends to visual/image-based retrieval on scientific papers.
 
 ## Sources
+- [[muennighoff2022mteb]]
 - [[01_Sources/web_clips/embedding-models-for-rag]]

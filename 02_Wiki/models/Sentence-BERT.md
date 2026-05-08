@@ -4,8 +4,8 @@ aliases: [SBERT, sentence-transformers]
 tags: [rag, model, embedding]
 status: stub
 created: 2026-04-18
-updated: 2026-04-21
-sources: ["[[01_Sources/web_clips/embedding-models-for-rag]]"]
+updated: 2026-05-08
+sources: ["[[01_Sources/web_clips/embedding-models-for-rag]]", "[[01_Sources/web_clips/aarsen-2026-multimodal-sentence-transformers]]", "[[01_Sources/web_clips/sbert-net-sentence-transformers-library]]"]
 ---
 
 # Sentence-BERT
@@ -26,6 +26,20 @@ Similarity = cosine(u, v)
 
 The `sentence-transformers` Python library (also by Reimers) became the standard interface for loading and using SBERT-style models and is the foundation most modern embedding models (BGE, E5, etc.) are served through.
 
+## Sentence Transformers library architecture
+The `sentence-transformers` library exposes three model classes serving distinct roles in a RAG pipeline: [[01_Sources/web_clips/sbert-net-sentence-transformers-library]]
+
+| Class | Role | Example |
+|-------|------|---------|
+| `SentenceTransformer` | Dense bi-encoder embedding | `all-mpnet-base-v2`, `Qwen3-VL-Embedding-2B` |
+| `CrossEncoder` | Reranker (joint query-document scoring) | `ms-marco-MiniLM-L-6-v2`, `Qwen3-VL-Reranker-2B` |
+| `SparseEncoder` | Learned sparse retrieval (SPLADE) | `naver/splade-cocondenser-ensembledistil` |
+
+10,000+ pretrained models are available on Hugging Face Hub. Production optimizations include ONNX, OpenVINO, and Flash Attention 2. Maintained by Hugging Face (originally UKP Lab). [[01_Sources/web_clips/sbert-net-sentence-transformers-library]]
+
+## Sentence Transformers v5.4 — multimodal extension
+The `sentence-transformers` library (v5.4, April 2026) extended beyond text to support multimodal encoding and reranking across images, audio, and video using the same `SentenceTransformer` and `CrossEncoder` APIs. See [[Multimodal Embeddings]] for details. Key multimodal models served through the library include Qwen3-VL-Embedding, BGE-VL, E5-v, and CLIP variants. [[01_Sources/web_clips/aarsen-2026-multimodal-sentence-transformers]]
+
 ## Historical significance
 SBERT established the bi-encoder paradigm for semantic search that underpins modern RAG [[Dense Retrieval]]. Before SBERT, semantic search with BERT was impractical at corpus scale.
 
@@ -40,6 +54,7 @@ SBERT established the bi-encoder paradigm for semantic search that underpins mod
 - [[E5]]
 - [[ColBERT]]
 - [[Embeddings]]
+- [[Multimodal Embeddings]]
 - [[Dense Retrieval]]
 - [[MTEB]]
 
