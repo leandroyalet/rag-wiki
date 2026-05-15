@@ -4,8 +4,8 @@ aliases: [text splitting, document splitting, chunk size]
 tags: [rag, indexing, preprocessing]
 status: draft
 created: 2026-04-18
-updated: 2026-04-26
-sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]", "[[zhou2026chunktaxonomy]]", "[[moura2026adaptive]]", "[[zhao2025moc]]", "[[01_Sources/web_clips/Contextual Retrieval in AI Systems]]"]
+updated: 2026-05-15
+sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]", "[[zhou2026chunktaxonomy]]", "[[moura2026adaptive]]", "[[zhao2025moc]]", "[[01_Sources/web_clips/Contextual Retrieval in AI Systems]]", "[[01_Sources/web_clips/chonkie-docs-welcome]]", "[[chen2024densex]]"]
 ---
 
 # Chunking
@@ -25,14 +25,14 @@ It governs the precision/recall trade-off of the retrieval step: chunks that are
 [[zhou2026chunktaxonomy]] unifies chunking strategies along two orthogonal dimensions:
 
 ### Dimension 1 — Segmentation method
-| Category | Method | Description |
-|----------|--------|-------------|
-| Structure-based | Fixed-size | Split every N tokens with optional overlap |
-| Structure-based | Sentence | Split at sentence boundaries |
-| Structure-based | Paragraph | Split at `\n\n` or heading boundaries |
-| Semantic | Semantic splitting | Split where cosine similarity between adjacent sentences falls below a threshold |
-| LLM-guided | **DenseX** | LLM decomposes text into atomic propositions; each proposition is a chunk |
-| LLM-guided | **LumberChunker** | LLM inserts breakpoints between paragraphs where it detects a topic shift |
+| Category        | Method             | Description                                                                      |
+| --------------- | ------------------ | -------------------------------------------------------------------------------- |
+| Structure-based | Fixed-size         | Split every N tokens with optional overlap                                       |
+| Structure-based | Sentence           | Split at sentence boundaries                                                     |
+| Structure-based | Paragraph          | Split at `\n\n` or heading boundaries                                            |
+| Semantic        | Semantic splitting | Split where cosine similarity between adjacent sentences falls below a threshold |
+| LLM-guided      | **[[DenseX]]**         | LLM decomposes text into atomic propositions; each proposition is a chunk        |
+| LLM-guided      | **LumberChunker**  | LLM inserts breakpoints between paragraphs where it detects a topic shift        |
 
 ### Dimension 2 — Embedding timing
 | Paradigm | How it works |
@@ -62,11 +62,18 @@ A 10–20 % token overlap ensures that context spanning a boundary is retrievabl
 
 ## Variants
 - **Hierarchical / parent-child chunking**: small chunks are embedded for precision; at retrieval time, the parent (larger) chunk is returned for richer context.
-- **Proposition-based chunking (DenseX)**: split on atomic factual claims rather than fixed windows; best for in-document retrieval. [[zhou2026chunktaxonomy]]
+- **[[DenseX]] (proposition-based chunking)**: split on atomic factual claims — minimal, self-contained, single-fact units with all coreference resolved; improves unsupervised dense retrieval recall by +9–12 avg Recall@5 and benefits long-tail entity queries especially. [[chen2024densex]] [[zhou2026chunktaxonomy]]
 - **[[Late Chunking]]**: embed full document with long-context model first, then segment embeddings — preserves cross-sentence context. [[zhou2026chunktaxonomy]]
 - **[[Adaptive Chunking]]**: per-document strategy selection guided by 5 intrinsic quality metrics (RC, ICC, DCC, BI, SC); +10 pp answer correctness on mixed-domain corpora. [[moura2026adaptive]]
 - **[[MoC]] (Mixture-of-Chunkers)**: route text segments to specialized small LMs by target chunk size; each outputs regex boundary patterns. [[zhao2025moc]]
+- **Neural chunking**: fine-tune a BERT-class model to classify token positions as chunk boundaries, detecting semantic shift without explicit rules. Implemented as `NeuralChunker` in [[Chonkie]]. [[01_Sources/web_clips/chonkie-docs-welcome]]
+- **LLM-powered chunking (SlumberChunker)**: fully agentic splitting where an LLM decides every boundary; highest quality, highest compute cost. [[01_Sources/web_clips/chonkie-docs-welcome]]
+- **AST-aware code chunking**: parse source code into an abstract syntax tree and split at function/class boundaries, preserving logical units across 165+ languages. Implemented as `CodeChunker` in [[Chonkie]]. [[01_Sources/web_clips/chonkie-docs-welcome]]
 - **RAPTOR tree summaries**: recursive summarization produces multi-granularity representations. See [[RAPTOR]].
+
+## Implementations / Libraries
+
+[[Chonkie]] is a dedicated open-source ingestion library (Python + JS) that bundles 10+ chunking strategies — token, sentence, recursive, semantic, neural, code, late chunking, and LLM-powered — together with embedding integrations, post-processing refineries (overlap, embedding attachment), and vector DB handshakes. It provides both a Python API and a self-hosted REST API server. [[01_Sources/web_clips/chonkie-docs-welcome]]
 
 ## Contextual enrichment
 Rather than changing how documents are split, **contextual enrichment** improves chunk quality by prepending an LLM-generated context blurb (50–100 tokens) to each chunk before embedding and BM25 indexing. This preserves document-level information (entity names, dates, section context) that would otherwise be lost. See [[Contextual Retrieval]]. [[01_Sources/web_clips/Contextual Retrieval in AI Systems]]
@@ -93,7 +100,9 @@ Five document-based metrics from [[moura2026adaptive]]: References Completeness 
 - [[Adaptive Chunking]]
 - [[Late Chunking]]
 - [[MoC]]
+- [[DenseX]]
 - [[Contextual Retrieval]]
+- [[Chonkie]]
 
 ## Sources
 - [[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]
@@ -101,3 +110,4 @@ Five document-based metrics from [[moura2026adaptive]]: References Completeness 
 - [[moura2026adaptive]]
 - [[zhao2025moc]]
 - [[01_Sources/web_clips/Contextual Retrieval in AI Systems]]
+- [[01_Sources/web_clips/chonkie-docs-welcome]]

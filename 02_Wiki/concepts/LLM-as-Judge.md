@@ -4,8 +4,8 @@ aliases: [LLM judge, LLM evaluation, G-Eval, LLM-as-evaluator]
 tags: [rag, evaluation, llm]
 status: stub
 created: 2026-04-26
-updated: 2026-04-26
-sources: ["[[chiang2023llmeval]]", "[[abeysinghe2024llmeval]]"]
+updated: 2026-05-15
+sources: ["[[chiang2023llmeval]]", "[[abeysinghe2024llmeval]]", "[[muller2025grouse]]"]
 ---
 
 # LLM-as-Judge
@@ -67,7 +67,16 @@ Categorising questions by **Bloom's Taxonomy** (Remember → Evaluate) reveals t
 - ❌ **Low inter-annotator agreement** even among human raters (Krippendorff's α: 0.12–0.52; only "Clarity" reaches moderate agreement). [[abeysinghe2024llmeval]]
 - ❌ Calibration varies across tasks: strong on coherence/faithfulness, weaker on fluency/groundedness. [[chiang2023llmeval]]
 
-## State of the art (as of 2026-04)
+## Calibration vs. correlation
+
+[[muller2025grouse]] introduces [[GroUSE]], a meta-evaluation benchmark of 144 unit tests that reveals a critical gap: **global correlation with GPT-4 is an insufficient proxy for judge quality**. A judge can correlate well with GPT-4 scores on aggregate while still failing to detect specific failure modes (irrelevant info, missing citations, wrong abstentions). Key findings:
+- RAGAS and DeepEval (with GPT-4) fail multiple GroUSE unit tests, especially on adversarial cases and citation accuracy.
+- Open-source judges that match GPT-4 correlation scores still fail GroUSE edge cases.
+- Fine-tuning Llama-3 on GPT-4's **reasoning traces** (not just scores) significantly improves both calibration and correlation. [[muller2025grouse]]
+
+The implication: judge selection should include unit-test evaluation on targeted failure modes, not just aggregate correlation metrics.
+
+## State of the art (as of 2026-05)
 Best practice from [[chiang2023llmeval]]: use **explain-then-rate** (ask the model to analyse the output, then assign a score) rather than score-only or auto-CoT prompts. This consistently pushes correlation with human ratings to SoTA on SummEval and Topical-Chat benchmarks.
 
 ## Related pages
@@ -75,6 +84,7 @@ Best practice from [[chiang2023llmeval]]: use **explain-then-rate** (ask the mod
 - [[DeepEval]]
 - [[TruLens]]
 - [[ARES]]
+- [[GroUSE]]
 - [[Answer Relevance]]
 - [[Faithfulness]]
 - [[Hallucination in RAG]]
@@ -82,3 +92,4 @@ Best practice from [[chiang2023llmeval]]: use **explain-then-rate** (ask the mod
 ## Sources
 - [[chiang2023llmeval]]
 - [[abeysinghe2024llmeval]]
+- [[muller2025grouse]]

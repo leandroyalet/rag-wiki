@@ -9,7 +9,7 @@ tags:
 status: stub
 created: 2026-04-18
 updated: 2026-04-18
-sources: []
+sources: ["[[muller2025grouse]]"]
 homepage: https://www.confident-ai.com
 repo: https://github.com/confident-ai/deepeval
 docs: https://docs.confident-ai.com
@@ -88,12 +88,14 @@ No canonical leaderboard; scores are system- and domain-specific. Confident AI's
 - Agent metrics (Tool Correctness, Task Completion) require structured trace data from the agent framework.
 - Cloud dashboard features (regression tracking, A/B testing) require a Confident AI account.
 - No fixed held-out test set — makes cross-paper comparisons harder than dataset-centric benchmarks like [[BEIR]].
+- **Edge-case failures**: [[muller2025grouse]] (GroUSE) shows DeepEval fails multiple unit tests on adversarial inputs and citation accuracy. Its faithfulness implementation differs significantly from RAGAS's despite similar definitions — both fail on targeted failure-mode unit tests. [[muller2025grouse]]
 
 ## Related tools / benchmarks
 - [[RAGAS]] — similar reference-free RAG eval framework; DeepEval can wrap RAGAS metrics natively
 - [[TruLens]] — overlapping RAG Triad metrics; different SDK and dashboard
 - [[ARES]]
 - [[BEIR]] — fixed-corpus retrieval benchmark (dataset, not a framework)
+- [[GroUSE]] — meta-evaluation benchmark that stress-tests DeepEval on edge cases
 
 ## Sources
 > [!todo] Source needed — add primary citation once a DeepEval paper or technical report is ingested.

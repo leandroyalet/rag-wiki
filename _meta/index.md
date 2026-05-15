@@ -1,7 +1,7 @@
 ---
 type: meta
 tags: [index, map-of-content]
-updated: 2026-05-08
+updated: 2026-05-15
 ---
 
 # Index — Entry map to the RAG wiki
@@ -40,10 +40,11 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 - [[Sparse Retrieval]] — Retrieving documents by token-overlap scoring ([[BM25]], TF-IDF) — fast, interpretable, and excellent for exact-match queries; misses semantic similarity.
 - [[Vector Database]] — A database purpose-built to store embedding vectors and run fast Approximate Nearest Neighbor (ANN) search, forming the retrieval backbone of most RAG systems.
 
-### Methods & Techniques (13)
+### Methods & Techniques (14)
 
 - [[Adaptive Chunking]] — Per-document chunking strategy selection guided by five intrinsic quality metrics — moving away from "one-size-fits-all" splitting to document-aware preprocessing that improves RAG answer correctness by ~10 percentage points.
 - [[Contextual Retrieval]] — Prepend a short LLM-generated context summary to each chunk before embedding and BM25 indexing, so isolated chunks retain the document-level information needed to be retrieved correctly — reducing top-20 retrieval failures by 49%, and 67% when combined with reranking.
+- [[DenseX]] — Index a corpus at the proposition level — atomic, self-contained single-fact sentences — instead of passages or sentences; dense retrievers then achieve higher recall and downstream QA accuracy without any fine-tuning.
 - [[Fusion-in-Decoder]] — Encode each retrieved passage independently with a T5 encoder, then concatenate all representations for the decoder — enabling the model to attend jointly across all passages at generation time without the quadratic cost of encoding them together.
 - [[GraphRAG]] — Builds a knowledge graph and multi-level community summaries from the corpus at index time, then answers queries by graph traversal — enabling holistic, cross-document reasoning that naive vector search cannot do.
 - [[Hybrid Search]] — Combine [[Sparse Retrieval]] ([[BM25]]) and [[Dense Retrieval]] (embeddings) and fuse their rankings to get better recall than either alone.
@@ -63,15 +64,16 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 - [[E5]] — Microsoft's family of text embedding models (EmbEddings from bidirEctional Encoder rEpresentations), trained with weakly-supervised contrastive learning on large web text pairs — strong across MTEB tasks, especially retrieval.
 - [[Sentence-BERT]] — The 2019 model that made BERT usable for semantic similarity at scale — a siamese bi-encoder that pools BERT into fixed-length sentence vectors, enabling cosine-similarity search without expensive pairwise inference.
 
-### Benchmarks & Evaluation (5)
+### Benchmarks & Evaluation (6)
 
 - [[BEIR]] — A heterogeneous retrieval benchmark covering 18 datasets across 9 diverse domains — the standard zero-shot transfer test for dense and sparse retrieval models.
+- [[GroUSE]] — A meta-evaluation benchmark of 144 hand-crafted unit tests that measures whether an LLM judge correctly detects all 7 grounded-QA failure modes — revealing that RAGAS and DeepEval fail many edge cases despite high GPT-4 correlation.
 - [[IRPAPERS]] — A 3,230-page visual benchmark of IR scientific papers comparing image- and text-based retrieval and QA, with the key finding that neither modality dominates and multimodal fusion gives the best results.
 - [[KILT]] — A unified benchmark covering 11 knowledge-intensive NLP tasks — QA, slot filling, fact-checking, dialogue, and entity linking — all grounded against the same Wikipedia snapshot, enabling apples-to-apples comparison of retrieval systems.
 - [[MME]] — The first comprehensive evaluation benchmark for Multimodal LLMs — 14 subtasks across perception and cognition, manually annotated to prevent data leakage, with a binary yes/no instruction format that enables clean quantitative comparison.
 - [[MTEB]] — The standard leaderboard for text embedding models — 8 task types, 181 datasets, evaluated on NDCG@10 for retrieval — the first stop when choosing an embedding model for RAG.
 
-### Infrastructure & Tools (20)
+### Infrastructure & Tools (21)
 
 **Vector stores**
 - [[FAISS]] — Meta AI's open-source C++/Python library for billion-scale similarity search — a library, not a server; no persistence, no metadata filtering, but the fastest option for batch offline search.
@@ -90,6 +92,7 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 - [[LlamaIndex]] — Python/TypeScript framework purpose-built for LLM-powered data retrieval — excels at data connectors, flexible index types, and composable query engines over private documents and databases.
 
 **Document parsing & ingestion**
+- [[Chonkie]] — Open-source Python/JS ingestion library that provides 10+ chunking strategies (token, sentence, semantic, neural, code, LLM-powered, and more), embedding integrations, vector DB handshakes, and a self-hosted REST API — all from a single `pip install chonkie`.
 - [[Docling]] — IBM Research's open-source document parser that converts PDFs, DOCX, PPTX, HTML, and other formats into clean Markdown or structured JSON — the ingestion layer before chunking in a RAG pipeline.
 - [[Kreuzberg]] — Rust-core document extraction library with Python and 10+ language bindings — extracts text, metadata, tables, and code intelligence from 91+ file formats at native speeds, with multiple OCR backends and a token-efficient wire format for LLM/RAG pipelines.
 - [[MarkItDown]] — Microsoft's lightweight Python utility that converts PDFs, Office files, images, audio, HTML, and more into Markdown — optimised for feeding LLM pipelines, not for human-readable output.

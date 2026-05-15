@@ -5,9 +5,10 @@ tags: [rag, method, chunking, embeddings]
 status: stub
 created: 2026-04-26
 updated: 2026-04-26
-sources: ["[[zhou2026chunktaxonomy]]"]
+sources: ["[[zhou2026chunktaxonomy]]", "[[01_Sources/web_clips/chonkie-docs-welcome]]"]
 introduced_by: Günther et al. (Jina AI)
 year: 2024
+updated: 2026-05-15
 ---
 
 # Late Chunking
@@ -39,6 +40,9 @@ From [[zhou2026chunktaxonomy]] (reproduction study across multiple retrievers):
 - ❌ Short documents where each chunk already contains sufficient context.
 - ❌ Corpora too large to fit document-level context in the encoder's window.
 
+## Implementations
+- [[Chonkie]] ships a `LateChunker` that implements this strategy out of the box. [[01_Sources/web_clips/chonkie-docs-welcome]]
+
 ## Related / alternatives
 - [[Chunking]] — parent concept.
 - [[Adaptive Chunking]] — selects chunking strategy per document.
@@ -46,3 +50,4 @@ From [[zhou2026chunktaxonomy]] (reproduction study across multiple retrievers):
 
 ## Sources
 - [[zhou2026chunktaxonomy]]
+- [[01_Sources/web_clips/chonkie-docs-welcome]]

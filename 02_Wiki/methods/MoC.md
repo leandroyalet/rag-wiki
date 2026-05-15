@@ -10,7 +10,7 @@ introduced_by: Zhao et al.
 year: 2025
 ---
 
-# MoC
+# MoC (Mixture of Chunkers)
 
 > **TL;DR** A granularity-aware routing framework that sends text to specialized small LMs based on target chunk size, each of which outputs regex boundary markers rather than full text — achieving LLM-level chunking quality at small-model cost.
 

@@ -5,7 +5,7 @@ tags: [rag, engineering, evaluation, quality]
 status: stub
 created: 2026-04-19
 updated: 2026-04-19
-sources: ["[[barnett2024failures]]", "[[brehme2025ragindustry]]", "[[simon2024rageval]]"]
+sources: ["[[barnett2024failures]]", "[[brehme2025ragindustry]]", "[[simon2024rageval]]", "[[muller2025grouse]]"]
 ---
 
 # RAG Failure Points
@@ -54,6 +54,21 @@ Robustness evolves at runtime rather than being designed upfront — implying co
 ## Evaluation methodology
 [[simon2024rageval]] proposes a reusable evaluation blueprint for RAG systems with three principles: (1) careful baseline and metric selection, (2) systematic refinements guided by qualitative failure analysis of the failure points, and (3) transparent reporting of design decisions for replication. Applied empirically to software configuration dependency validation, the methodology produced the highest accuracy in that field — validating FP-driven iterative refinement as an effective engineering strategy. [[simon2024rageval]]
 
+## Generator failure modes (GroUSE taxonomy)
+[[muller2025grouse]] proposes a complementary taxonomy focused on the **generation step** (grounded QA) with 7 failure modes that automated evaluation frameworks must detect:
+
+| ID | Failure mode | Metric |
+|----|-------------|--------|
+| FM1 | Irrelevant information in answer | Answer Relevancy |
+| FM2 | Fails to abstain on unanswerable question | Negative Rejection |
+| FM3 | Missing relevant information | Completeness |
+| FM4 | Wrongly abstains on answerable question | Positive Acceptance |
+| FM5 | Correct abstention + unrelated added info | Usefulness |
+| FM6 | Missing or incorrect citation | Faithfulness |
+| FM7 | Distorted or unsupported claim | Faithfulness |
+
+RAGAS and DeepEval miss several of these modes in unit testing despite strong aggregate GPT-4 correlation. [[muller2025grouse]]
+
 ## Relation to other evaluation frameworks
 - [[RAGAS]] and [[DeepEval]] metrics map onto FP2 (Context Relevance/Precision), FP1 + FP4 (Faithfulness), and FP6 + FP7 (Answer Relevance).
 - [[Hallucination in RAG]] covers FP1 and FP4 specifically.
@@ -68,7 +83,9 @@ Robustness evolves at runtime rather than being designed upfront — implying co
 - [[Hybrid Search]]
 - [[RAPTOR]]
 - [[RAGAS]]
+- [[GroUSE]]
 
 ## Sources
 - [[barnett2024failures]]
 - [[simon2024rageval]]
+- [[muller2025grouse]]

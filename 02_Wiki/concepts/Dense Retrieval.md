@@ -5,7 +5,7 @@ tags: [rag, retrieval]
 status: stub
 created: 2026-04-18
 updated: 2026-04-18
-sources: ["[[lewis2020rag]]", "[[01_Sources/web_clips/embedding-models-for-rag]]", "[[oche2025ragsurvey]]"]
+sources: ["[[lewis2020rag]]", "[[01_Sources/web_clips/embedding-models-for-rag]]", "[[oche2025ragsurvey]]", "[[chen2024densex]]"]
 ---
 
 # Dense Retrieval
@@ -23,6 +23,9 @@ Dense retrieval is the default first-stage retriever in modern RAG pipelines. It
 ## How it works / How it's used
 1. **Offline**: every document chunk is embedded → stored in a [[Vector Database]] (HNSW/IVF index).
 2. **Online**: user query is embedded with the same model → ANN search retrieves top-k chunks → chunks are passed to the LLM.
+
+## Retrieval granularity
+The choice of index unit — document, passage, sentence, or proposition — significantly impacts retrieval quality independently of the retriever model. [[DenseX]] (Chen et al. 2024) shows that indexing a corpus at the **proposition level** improves average Recall@5 by +9–12 points for unsupervised retrievers across five QA datasets, by providing higher signal-to-noise per token. [[chen2024densex]]
 
 ## Variants
 - **Single-vector bi-encoder** (DPR, [[BGE]], [[E5]]) — one vector per passage; fast, scalable.

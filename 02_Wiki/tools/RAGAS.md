@@ -7,8 +7,8 @@ tags:
   - benchmark
 status: stub
 created: 2026-04-18
-updated: 2026-04-21
-sources: ["[[Es2023ragas]]"]
+updated: 2026-05-15
+sources: ["[[Es2023ragas]]", "[[muller2025grouse]]"]
 homepage: https://ragas.io
 repo: https://github.com/explodinggradients/ragas
 docs: https://docs.ragas.io
@@ -67,12 +67,14 @@ Scores depend heavily on the LLM judge. GPT-4-class judges give more stable resu
 - Faithfulness and Answer Relevance are reference-free but can still be gamed by verbose, hedge-heavy answers.
 - Context Recall and Answer Correctness require a reference answer, reintroducing annotation cost.
 - Synthetic test-set generation may not reflect real user query distributions.
+- **Edge-case failures**: [[muller2025grouse]] (GroUSE) shows RAGAS fails multiple unit tests targeting adversarial inputs and citation accuracy. Aggregate correlation with human judgment does not imply good calibration on edge cases. Prompt sensitivity is high — different implementations of the same metric yield different unit-test results. [[muller2025grouse]]
 
 ## Related tools / benchmarks
 - [[DeepEval]] — similar LLM-as-judge eval framework; can wrap RAGAS metrics natively
 - [[TruLens]] — overlapping RAG Triad metrics (Context Relevance, Groundedness, Answer Relevance)
 - [[ARES]]
 - [[BEIR]] — fixed-corpus retrieval benchmark (dataset, not a framework)
+- [[GroUSE]] — meta-evaluation benchmark that stress-tests RAGAS on edge cases
 
 ## Sources
 - [[Es2023ragas]] — *RAGAS: Automated Evaluation of Retrieval Augmented Generation* (Es et al., 2023)

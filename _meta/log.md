@@ -371,3 +371,31 @@ Format:
 - **operation**: lint-wiki
 - **files touched**: `_meta/lint-2026-05-08.md` (new)
 - **notes**: 42 issues total — 11 broken links (1 format mismatch in BM25.md, 1 fully missing berges2024commOnt, 9 citekey-mismatch lit notes with long filenames), 5 orphan pages (BeyondLLM/Federated RAG/Instructor/Unstructured/VERA), 0 missing frontmatter, 0 empty stubs, 0 duplicates, 2 wanted items (berges lit note + unread clip), 1 pre-existing contradiction (C1 open), 23 uncited pages (16 tool pages acceptable, 7 concept/method pages flagged)
+
+## 2026-05-15 — Claude Code (/ingest-url)
+- **operation**: ingest-url
+- **source**: https://docs.chonkie.ai/common/welcome
+- **clip saved**: `01_Sources/web_clips/chonkie-docs-welcome.md`
+- **files created**: `02_Wiki/tools/Chonkie.md`
+- **files updated**: `02_Wiki/concepts/Chunking.md` (added Implementations section, NeuralChunker/SlumberChunker/CodeChunker variants, Chonkie backlink), `02_Wiki/methods/Late Chunking.md` (added Implementations section + Chonkie backlink)
+
+## 2026-05-15 — Claude Code (/ingest papers)
+- **operation**: ingest
+- **sources**:
+  - `01_Sources/papers/2312.06648v3.pdf` → citekey `chen2024densex` (Dense X Retrieval, EMNLP 2024)
+  - `01_Sources/papers/2409.06595v3.pdf` → citekey `muller2025grouse` (GroUSE benchmark, arXiv 2025)
+- **lit notes created**: `01_Sources/papers/chen2024densex.md`, `01_Sources/papers/muller2025grouse.md`
+- **wiki pages created**: `02_Wiki/methods/DenseX.md`, `02_Wiki/benchmarks/GroUSE.md`
+- **wiki pages updated**:
+  - `02_Wiki/concepts/Chunking.md` — enriched DenseX entry, added chen2024densex citation
+  - `02_Wiki/concepts/Dense Retrieval.md` — added Retrieval Granularity section citing chen2024densex
+  - `02_Wiki/concepts/LLM-as-Judge.md` — added Calibration vs. Correlation section, GroUSE backlink
+  - `02_Wiki/concepts/RAG Failure Points.md` — added GroUSE's 7 generator failure modes table
+  - `02_Wiki/tools/RAGAS.md` — added GroUSE edge-case limitation
+  - `02_Wiki/tools/DeepEval.md` — added GroUSE edge-case limitation, first source entry
+- **notes**: 2 previously untracked PDFs ingested; all claims cited; no hallucinated sources
+
+## 2026-05-15 — Claude Code (/update-index)
+- **operation**: update-index
+- **files touched**: `_meta/index.md`
+- **notes**: 68 pages indexed — Concepts (23), Methods (14), Models (4), Benchmarks (6), Tools (21); added DenseX to Methods, GroUSE to Benchmarks, Chonkie to Tools (Document parsing & ingestion)
