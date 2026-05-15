@@ -4,11 +4,10 @@ aliases: [late chunking, contextualized chunking]
 tags: [rag, method, chunking, embeddings]
 status: stub
 created: 2026-04-26
-updated: 2026-04-26
+updated: 2026-05-15
 sources: ["[[zhou2026chunktaxonomy]]", "[[01_Sources/web_clips/chonkie-docs-welcome]]"]
 introduced_by: Günther et al. (Jina AI)
 year: 2024
-updated: 2026-05-15
 ---
 
 # Late Chunking
