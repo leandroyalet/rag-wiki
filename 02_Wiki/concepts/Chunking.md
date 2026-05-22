@@ -5,7 +5,7 @@ tags: [rag, indexing, preprocessing]
 status: draft
 created: 2026-04-18
 updated: 2026-05-15
-sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]", "[[zhou2026chunktaxonomy]]", "[[moura2026adaptive]]", "[[zhao2025moc]]", "[[01_Sources/web_clips/Contextual Retrieval in AI Systems]]", "[[01_Sources/web_clips/chonkie-docs-welcome]]", "[[chen2024densex]]"]
+sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]", "[[zhou2026chunktaxonomy]]", "[[moura2026adaptive]]", "[[zhao2025moc]]", "[[01_Sources/web_clips/Contextual Retrieval in AI Systems]]", "[[01_Sources/web_clips/chonkie-docs-welcome]]", "[[chen2024densex]]", "[[01_Sources/web_clips/Understanding Retrieval in RAG Systems Why Chunk Size Matters  by Sarah Lea  in Towards AI]]"]
 ---
 
 # Chunking
@@ -56,6 +56,17 @@ DenseX (proposition-based) shows 15–27% effectiveness *loss* vs. paragraph for
 - **Recursive character splitting**: try `\n\n` → `\n` → ` ` in order, respecting natural paragraph structure.
 - **Semantic chunking**: embed sentences and split where cosine similarity between adjacent sentences drops below a threshold — keeps coherent units together.
 - **Document-structure-aware**: respect Markdown headings, HTML `<p>` tags, or PDF page boundaries.
+
+### Empirical chunk size guidance
+An empirical comparison across character-based sizes [[01_Sources/web_clips/Understanding Retrieval in RAG Systems Why Chunk Size Matters  by Sarah Lea  in Towards AI]]:
+
+| Size (chars) | Observed behaviour |
+|---|---|
+| ~80 | Too fragmentary — individual sentences lack enough context; similarity scores are unstable |
+| ~220 | Mostly stable but occasional ambiguity when a sentence spans a boundary |
+| ~500 | Robust: consistently high similarity scores; self-contained units with sufficient context |
+
+Key interpretation note: cosine similarity scores are **relative, not absolute** — a score of 0.8 does not guarantee relevance; what matters is the *gap* between the top-1 and top-2 scores. A narrow gap signals retrieval uncertainty and is a useful signal for escalating to a fallback strategy. [[01_Sources/web_clips/Understanding Retrieval in RAG Systems Why Chunk Size Matters  by Sarah Lea  in Towards AI]]
 
 ### Overlap
 A 10–20 % token overlap ensures that context spanning a boundary is retrievable from both adjacent chunks.
@@ -111,3 +122,5 @@ Five document-based metrics from [[moura2026adaptive]]: References Completeness 
 - [[zhao2025moc]]
 - [[01_Sources/web_clips/Contextual Retrieval in AI Systems]]
 - [[01_Sources/web_clips/chonkie-docs-welcome]]
+- [[chen2024densex]]
+- [[01_Sources/web_clips/Understanding Retrieval in RAG Systems Why Chunk Size Matters  by Sarah Lea  in Towards AI]]

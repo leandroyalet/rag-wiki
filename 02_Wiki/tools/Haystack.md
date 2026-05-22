@@ -75,7 +75,7 @@ Pipelines serialize to YAML, enabling version control and editing outside Python
 
 **Embedding models**: FastEmbed, Jina AI, Voyage AI, mixedbread ai, INSTRUCTOR.
 
-**Document stores / vector DBs**: [[Qdrant]], [[Pinecone]], [[Weaviate]], [[FAISS]], Chroma, Elasticsearch, OpenSearch, pgvector, Milvus, MongoDB, Neo4j, AstraDB, LanceDB, and more.
+**Document stores / vector DBs**: [[Qdrant]], [[Pinecone]], [[Weaviate]], [[FAISS]], Chroma, Elasticsearch, OpenSearch, pgvector, [[Milvus]], MongoDB, Neo4j, AstraDB, LanceDB, and more.
 
 **Ingestion**: [[Docling]], Azure Document Intelligence, Unstructured, PaddleOCR, Firecrawl, Notion Extractor.
 

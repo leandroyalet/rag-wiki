@@ -37,7 +37,7 @@ Its structured JSON output preserves document hierarchy (headings, tables, figur
 - **Local execution**: processes sensitive documents without sending data to external APIs.
 
 ## Integrations
-Plug-and-play connectors for [[LangChain]], [[LlamaIndex]], Crew AI, and Haystack. Also works with Data Prep Kit for chunking and tokenization post-parsing.
+Plug-and-play connectors for [[LangChain]], [[LlamaIndex]], Crew AI, and Haystack. Also works with Data Prep Kit for chunking and tokenization post-parsing. [[RAGFlow]] uses Docling as one of its document parsing backends alongside MinerU. [[01_Sources/web_clips/infiniflow-ragflow-infinity]]
 
 ## When to use it
 - ✅ RAG corpus contains PDFs, slide decks, or Word documents with non-trivial layout (tables, multi-column, figures).
@@ -52,6 +52,7 @@ Plug-and-play connectors for [[LangChain]], [[LlamaIndex]], Crew AI, and Haystac
 - [[LangChain]]
 - [[LlamaIndex]]
 - [[Retrieval-Augmented Generation]]
+- [[RAGFlow]] — uses Docling as a parsing backend
 - [[MarkItDown]] — Microsoft's lighter-weight alternative
 
 ## Sources

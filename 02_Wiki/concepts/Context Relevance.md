@@ -22,7 +22,7 @@ Context Relevance is the retrieval-side quality metric in [[RAGAS]] and related 
 - Waste prompt tokens.
 - Risk confusing the LLM and inducing hallucination or topic drift.
 
-It connects to classical information retrieval metrics (Precision@k, Recall@k, F1@k) evaluated on retrieved chunks. [[01_Sources/web_clips/mouschoutzi-retrieval-quality-precision-recall-f1]]
+It connects to classical information retrieval metrics ([[Precision and Recall|Precision@k, Recall@k, F1@k]]) evaluated on retrieved chunks. [[01_Sources/web_clips/mouschoutzi-retrieval-quality-precision-recall-f1]]
 
 ## How it works / How it's used
 
@@ -42,6 +42,7 @@ RAGAS uses an LLM to judge each retrieved sentence as relevant or not to the que
 - ❌ LLM-based context relevance is reference-free but subject to judge model bias.
 
 ## Related pages
+- [[Precision and Recall]] — parent concept for Precision@k, Recall@k, F1@k
 - [[Faithfulness]]
 - [[RAGAS]]
 - [[Dense Retrieval]]

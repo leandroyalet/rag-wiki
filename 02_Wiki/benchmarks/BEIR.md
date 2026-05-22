@@ -34,7 +34,7 @@ BEIR (Benchmarking Information Retrieval) evaluates retrieval models on their ab
 ## Metrics
 | Metric | Description |
 |--------|-------------|
-| **NDCG@10** | Primary metric — normalized discounted cumulative gain at rank 10 |
+| **[[NDCG]]@10** | Primary metric — normalized discounted cumulative gain at rank 10 |
 | Recall@100 | Coverage metric — fraction of relevant docs in top 100 |
 | MRR@10 | Mean reciprocal rank; used for single-answer tasks |
 

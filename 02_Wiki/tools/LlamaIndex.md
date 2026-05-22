@@ -48,7 +48,7 @@ response = query_engine.query("What is RAG?")
 
 ## Key integrations
 **LLMs**: OpenAI, Anthropic, Google, Mistral, Ollama, HuggingFace, Cohere, and 50+.
-**Vector stores**: [[Qdrant]], [[Pinecone]], [[Weaviate]], [[FAISS]], Chroma, pgvector, Milvus, and 30+.
+**Vector stores**: [[Qdrant]], [[Pinecone]], [[Weaviate]], [[FAISS]], Chroma, pgvector, [[Milvus]], and 30+.
 **Data loaders**: 150+ connectors via LlamaHub (Notion, Confluence, GitHub, Slack, databases, APIs).
 **Evaluation**: `llama-index-evaluation` module; integrations with [[RAGAS]] and [[TruLens]].
 

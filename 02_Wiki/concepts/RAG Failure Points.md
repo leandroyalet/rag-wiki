@@ -4,8 +4,8 @@ aliases: [RAG failure modes, RAG failure taxonomy, FP1-FP7]
 tags: [rag, engineering, evaluation, quality]
 status: stub
 created: 2026-04-19
-updated: 2026-04-19
-sources: ["[[barnett2024failures]]", "[[brehme2025ragindustry]]", "[[simon2024rageval]]", "[[muller2025grouse]]"]
+updated: 2026-05-17
+sources: ["[[barnett2024failures]]", "[[brehme2025ragindustry]]", "[[simon2024rageval]]", "[[muller2025grouse]]", "[[01_Sources/web_clips/RAG, LLM Wiki, or Gbrain? How Your Agent Remembers Changes Everything  by Yanli Liu  in AI Advances]]", "[[01_Sources/web_clips/Retrieval Augmented Generation (RAG) limitations]]"]
 ---
 
 # RAG Failure Points
@@ -69,6 +69,28 @@ Robustness evolves at runtime rather than being designed upfront — implying co
 
 RAGAS and DeepEval miss several of these modes in unit testing despite strong aggregate GPT-4 correlation. [[muller2025grouse]]
 
+## Pattern-level limitations (Liu taxonomy)
+Liu (2025) identifies three architectural failure patterns that are inherent to the RAG paradigm itself — not fixable by better chunking or retrieval — and that motivate moving toward LLM Wiki or agentic architectures [[01_Sources/web_clips/RAG, LLM Wiki, or Gbrain? How Your Agent Remembers Changes Everything  by Yanli Liu  in AI Advances]]:
+
+| Pattern | Description |
+|---------|-------------|
+| **Chunking problem** | RAG retrieves text fragments, not synthesized knowledge; cross-document reasoning receives disconnected pieces rather than an integrated answer. Affects FP4 and FP7. |
+| **Re-derivation problem** | Every query re-runs retrieval and synthesis from scratch; no learning or synthesis accumulates across sessions. |
+| **Passivity problem** | RAG is reactive — it waits for queries rather than proactively maintaining, reconciling, or updating its knowledge base. |
+
+These differ from FP1–FP7 in that they are not pipeline bugs but structural limitations of the retrieve-then-generate pattern. [[01_Sources/web_clips/RAG, LLM Wiki, or Gbrain? How Your Agent Remembers Changes Everything  by Yanli Liu  in AI Advances]]
+
+## Additional failure modes (Emanuilov taxonomy)
+Emanuilov (2024) organises RAG limitations by pipeline phase, adding three issues not explicitly covered by FP1–FP7 [[01_Sources/web_clips/Retrieval Augmented Generation (RAG) limitations]]:
+
+| Phase | Issue | Description | Mitigation |
+|-------|-------|-------------|-----------|
+| Retrieval | **Polysemy / word sense confusion** | Ambiguous query terms retrieve wrong sense (e.g., "apple" → fruit vs. company) | Word sense disambiguation; contextual query enrichment |
+| Generation | **Context order sensitivity** | The order in which retrieved chunks are presented to the LLM affects attention weights and response quality; less-salient but earlier chunks may dominate | Diversity-aware re-ordering; information salience detection |
+| System | **Latency overhead** | Each retrieval+generation cycle adds wall-clock time; problematic for real-time applications | Semantic caching ([[Cache-Augmented Generation|CAG]]); pre-computed embeddings; parallel retrieval |
+
+The polysemy issue partially overlaps FP2; context order sensitivity is a distinct generation-phase concern not captured by FM1–FM7. [[01_Sources/web_clips/Retrieval Augmented Generation (RAG) limitations]]
+
 ## Relation to other evaluation frameworks
 - [[RAGAS]] and [[DeepEval]] metrics map onto FP2 (Context Relevance/Precision), FP1 + FP4 (Faithfulness), and FP6 + FP7 (Answer Relevance).
 - [[Hallucination in RAG]] covers FP1 and FP4 specifically.
@@ -89,3 +111,5 @@ RAGAS and DeepEval miss several of these modes in unit testing despite strong ag
 - [[barnett2024failures]]
 - [[simon2024rageval]]
 - [[muller2025grouse]]
+- [[01_Sources/web_clips/RAG, LLM Wiki, or Gbrain? How Your Agent Remembers Changes Everything  by Yanli Liu  in AI Advances]]
+- [[01_Sources/web_clips/Retrieval Augmented Generation (RAG) limitations]]

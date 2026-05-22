@@ -399,3 +399,81 @@ Format:
 - **operation**: update-index
 - **files touched**: `_meta/index.md`
 - **notes**: 68 pages indexed — Concepts (23), Methods (14), Models (4), Benchmarks (6), Tools (21); added DenseX to Methods, GroUSE to Benchmarks, Chonkie to Tools (Document parsing & ingestion)
+
+## 2026-05-16 — Claude Code (/ingest articles)
+- **operation**: ingest
+- **sources**:
+  - `01_Sources/web_clips/Building the Entire RAG Ecosystem and Optimizing Every Component.md` (Fareed Khan)
+  - `01_Sources/web_clips/Different Retrieval Methods  by Yed Pavankumar.md`
+  - `01_Sources/web_clips/RAG, LLM Wiki, or Gbrain? How Your Agent Remembers Changes Everything  by Yanli Liu  in AI Advances.md`
+  - `01_Sources/web_clips/Understanding Retrieval in RAG Systems Why Chunk Size Matters  by Sarah Lea  in Towards AI.md`
+- **wiki pages updated**:
+  - `02_Wiki/concepts/Retrieval-Augmented Generation.md` — added Iterative/Adaptive/Real-Time/Hierarchical RAG variants (Pavankumar); added chunking/re-derivation/passivity failure patterns and LLM Wiki vs GBrain comparison (Liu)
+  - `02_Wiki/concepts/RAG Failure Points.md` — added Pattern-level limitations section (Liu): chunking problem, re-derivation problem, passivity problem
+  - `02_Wiki/concepts/Chunking.md` — added Empirical chunk size guidance section (Sarah Lea): 80/220/500 char breakpoints, similarity score interpretation, uncertainty detection via score gap
+  - `02_Wiki/methods/RAG-Fusion.md` — added source from Fareed Khan article; retained k=60 RRF default
+  - `02_Wiki/concepts/Query Expansion.md` — added Step-back prompting and Sub-question decomposition citations (Fareed Khan); added MultiQueryRetriever note
+  - `02_Wiki/concepts/Multi-hop Retrieval.md` — added "Iterative RAG" alias; added Pavankumar source
+- **notes**: 4 previously uncited web clips processed; all new claims cited; no pages created (all content merged into existing pages)
+
+## 2026-05-16 — Claude Code (/ingest-url)
+- **operation**: ingest-url
+- **source**: https://milvus.io/ (homepage redirected; content retrieved from https://raw.githubusercontent.com/milvus-io/milvus/master/README.md)
+- **clip saved**: `01_Sources/web_clips/milvus-vector-database.md`
+- **files touched**:
+  - `02_Wiki/tools/Milvus.md` — CREATED: full tool page (deployment options, index types, GPU/sparse support, ecosystem integrations)
+  - `02_Wiki/concepts/Vector Database.md` — added Milvus row to variants table; added [[Milvus]] to related pages
+  - `02_Wiki/tools/LlamaIndex.md` — upgraded bare "Milvus" text to [[Milvus]] wikilink
+  - `02_Wiki/tools/Haystack.md` — upgraded bare "Milvus" text to [[Milvus]] wikilink
+  - `_meta/index.md` — added [[Milvus]] under Infrastructure & Tools → Vector stores (count: 21 → 22)
+
+## 2026-05-17 — Claude Code (/ingest web-clips)
+- **operation**: ingest
+- **sources processed**: 2 (zero-backlink web clips)
+  - `01_Sources/web_clips/RAG vs GraphRAG Shared Goal & Key Differences.md` (Memgraph blog)
+  - `01_Sources/web_clips/Retrieval Augmented Generation (RAG) limitations.md` (Simeon Emanuilov)
+- **wiki pages updated**:
+  - `02_Wiki/methods/GraphRAG.md` — added source; extended "Problem it solves" with fragmented context/over-retrieval/no-reasoning breakdown; added pivot/relevance-expansion retrieval mechanics; added supply chain / research / healthcare use cases to when-to-use
+  - `02_Wiki/concepts/RAG Failure Points.md` — added Emanuilov phase-based taxonomy table (polysemy, context order sensitivity, latency); added source
+- **notes**: 2 clips already well-integrated (BeyondLLM clip via BeyondLLM.md; mouschoutzi clip via Context Relevance.md) — skipped; 0-backlink clips fully processed
+
+## 2026-05-17 — Claude Code (/ingest-url)
+- **operation**: ingest-url
+- **source**: https://infiniflow.org/ (homepage redirected; content retrieved from ragflow.io, raw GitHub READMEs for RAGFlow and Infinity)
+- **clip saved**: `01_Sources/web_clips/infiniflow-ragflow-infinity.md`
+- **files touched**:
+  - `02_Wiki/tools/RAGFlow.md` — CREATED: full tool page (DeepDoc template-based chunking, hybrid search, traceable citations, agent orchestration, MCP, infrastructure stack, when-to-use)
+  - `02_Wiki/tools/Infinity.md` — CREATED: full tool page (dense/sparse/tensor/full-text hybrid search, 0.1ms latency benchmarks, deployment modes, single-binary architecture)
+  - `02_Wiki/concepts/Vector Database.md` — added Infinity row to variants table; added [[Infinity]] to related pages
+  - `02_Wiki/tools/Docling.md` — added RAGFlow integration note and [[RAGFlow]] to related pages
+  - `_meta/index.md` — added [[Infinity]] under Vector stores, [[RAGFlow]] under Frameworks & orchestration (count: 22 → 24)
+
+## 2026-05-22 — Claude Code (/ingest-url)
+- **operation**: ingest-url
+- **source**: https://en.wikipedia.org/wiki/Precision_and_recall
+- **clip saved**: `01_Sources/web_clips/wikipedia-precision-recall.md`
+- **files touched**:
+  - `02_Wiki/concepts/Precision and Recall.md` — CREATED: full concept page (formulas, confusion matrix, precision-recall trade-off, Fβ, retrieval variants Precision@k/Recall@k/F1@k/HitRate@k/MAP/NDCG, RAG application table)
+  - `02_Wiki/concepts/Context Relevance.md` — upgraded inline mention of Precision@k/Recall@k/F1@k to [[Precision and Recall]] wikilink; added to related pages
+  - `_meta/index.md` — added [[Precision and Recall]] under Concepts (count: 23 → 24)
+
+## 2026-05-22 — Claude Code (/ingest-url)
+- **operation**: ingest-url
+- **source**: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
+- **clip saved**: `01_Sources/web_clips/wikipedia-dcg-ndcg.md`
+- **files touched**:
+  - `02_Wiki/concepts/NDCG.md` — CREATED: full concept page (CG/DCG/IDCG/nDCG formulas, both industry and linear variants, graded relevance, properties, limitations, comparison table vs Precision@k/Recall@k)
+  - `02_Wiki/benchmarks/BEIR.md` — upgraded bare "NDCG@10" to [[NDCG]]@10 wikilink
+  - `02_Wiki/benchmarks/MTEB.md` — upgraded bare "NDCG@10" to [[NDCG]]@10 wikilink
+  - `02_Wiki/concepts/Precision and Recall.md` — upgraded NDCG@k table entry to [[NDCG]] wikilink; added [[NDCG]] to related pages
+  - `_meta/index.md` — added [[NDCG]] under Concepts (count: 24 → 25)
+
+## 2026-05-22 — Claude Code (/update-index)
+- **operation**: update-index
+- **files touched**: `_meta/index.md`
+- **notes**: 73 pages indexed — Concepts (25), Methods & Techniques (14), Models (4), Benchmarks & Evaluation (6), Infrastructure & Tools (24); added NDCG and Precision and Recall to Concepts; added Infinity, Milvus, RAGFlow to Tools
+
+## 2026-05-22 — Claude Code (/lint-wiki)
+- **operation**: lint-wiki
+- **files touched**: `_meta/lint-2026-05-22.md`
+- **notes**: 29 issues across 73 pages — 2 broken links, 1 malformed frontmatter, 5 orphans, 1 duplicate candidate pair, 20 uncited pages; 0 missing frontmatter fields, 0 empty stubs, 0 new contradictions

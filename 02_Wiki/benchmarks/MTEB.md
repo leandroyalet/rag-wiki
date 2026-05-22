@@ -62,7 +62,7 @@ Domain-specific datasets (medical, financial, legal) reward specialists over gen
 ## Metrics
 | Metric | Description |
 |--------|-------------|
-| **NDCG@10** | Primary retrieval metric — quality of top-10 ranking |
+| **[[NDCG]]@10** | Primary retrieval metric — quality of top-10 ranking |
 | MRR@10 | Mean reciprocal rank at 10 |
 | Recall@k | Coverage of relevant docs in top-k |
 | Average (all tasks) | Headline leaderboard score |

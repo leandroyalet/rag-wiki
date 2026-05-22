@@ -1,7 +1,7 @@
 ---
 type: meta
 tags: [index, map-of-content]
-updated: 2026-05-15
+updated: 2026-05-22
 ---
 
 # Index — Entry map to the RAG wiki
@@ -14,7 +14,7 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 
 ## 🧭 Knowledge tracks
 
-### Concepts (23)
+### Concepts (25)
 
 - [[Answer Relevance]] — Evaluation metric measuring whether the generated answer actually addresses the question asked — penalises incomplete, off-topic, or redundant answers without requiring a reference answer.
 - [[BM25]] — The dominant lexical ranking function — a probabilistic TF-IDF variant that saturates term frequency and penalises long documents. Standard baseline for sparse retrieval in every RAG pipeline.
@@ -31,6 +31,8 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 - [[LLM-as-Judge]] — Using a large language model (typically GPT-4 or similar) as an automatic evaluator that assigns quality scores to generated text — a scalable proxy for expensive human annotation.
 - [[Multi-hop Retrieval]] — Answering complex questions that require chaining multiple retrieval steps — each step uses what was just found to formulate the next query.
 - [[Multimodal Embeddings]] — Embedding models that map text, images, audio, and video into a single shared vector space — enabling cross-modal similarity search (e.g., text query → image results) using the same cosine-similarity infrastructure as text-only RAG.
+- [[NDCG]] — Normalized Discounted Cumulative Gain — the rank-aware, graded-relevance retrieval metric that rewards placing highly relevant documents at the top of a ranked list; scores range 0–1 and are cross-query comparable — primary metric for MTEB and BEIR.
+- [[Precision and Recall]] — The two fundamental retrieval quality metrics — precision measures what fraction of retrieved results are relevant; recall measures what fraction of all relevant results were retrieved — jointly captured by the F1 score.
 - [[Query Expansion]] — Rewriting or augmenting the user's query before retrieval to broaden vocabulary coverage, resolve ambiguity, or generate multiple complementary sub-queries.
 - [[RAG Failure Points]] — A seven-point taxonomy of where production RAG systems break down — from missing source content to LLM formatting failures — derived from case studies across research, education, and biomedical domains.
 - [[RAG Triad]] — Three-metric evaluation framework for RAG pipelines — Context Relevance, Groundedness, and Answer Relevance — covering every stage where failure can occur.
@@ -73,10 +75,12 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 - [[MME]] — The first comprehensive evaluation benchmark for Multimodal LLMs — 14 subtasks across perception and cognition, manually annotated to prevent data leakage, with a binary yes/no instruction format that enables clean quantitative comparison.
 - [[MTEB]] — The standard leaderboard for text embedding models — 8 task types, 181 datasets, evaluated on NDCG@10 for retrieval — the first stop when choosing an embedding model for RAG.
 
-### Infrastructure & Tools (21)
+### Infrastructure & Tools (24)
 
 **Vector stores**
 - [[FAISS]] — Meta AI's open-source C++/Python library for billion-scale similarity search — a library, not a server; no persistence, no metadata filtering, but the fastest option for batch offline search.
+- [[Infinity]] — AI-native, single-binary database by InfiniFlow — dense + sparse + tensor + full-text hybrid search in one engine; 0.1 ms vector latency, 15K+ QPS; no external dependencies; default backend for [[RAGFlow]].
+- [[Milvus]] — Open-source, distributed, Kubernetes-native vector database (Go + C++) for billion-scale ANN search — HNSW/DiskANN/GPU (NVIDIA CAGRA), native sparse BM25 hybrid search, multi-tenancy, and managed via Zilliz Cloud.
 - [[Pinecone]] — Fully managed, serverless vector database — zero infrastructure ops, real-time updates, metadata filtering, and namespaces; the easiest path to production vector search at the cost of vendor lock-in.
 - [[Qdrant]] — Open-source vector database (Rust) offering cosine/dot/Euclidean similarity search with filtering, used as the retrieval backend in RAG pipelines.
 - [[Weaviate]] — Open-source vector database with built-in hybrid search ([[BM25]] + vector), a modular architecture that can embed models directly, and strong multi-tenancy support — self-hosted or managed via Weaviate Cloud.
@@ -90,6 +94,7 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 - [[Instructor]] — Python library that wraps LLM clients (OpenAI, Anthropic, Gemini, and 12+ others) to enforce Pydantic-validated structured output — retrying with error feedback on validation failure until the model produces a conforming response.
 - [[LangChain]] — The most widely adopted open-source LLM framework — provides a composable expression language (LCEL) for chains and agents, with 500+ integrations and a large community ecosystem.
 - [[LlamaIndex]] — Python/TypeScript framework purpose-built for LLM-powered data retrieval — excels at data connectors, flexible index types, and composable query engines over private documents and databases.
+- [[RAGFlow]] — Open-source RAG engine by InfiniFlow combining deep document understanding (template-based DeepDoc chunking), hybrid search with traceable citations, and visual agent orchestration with MCP support — full-stack deployable service.
 
 **Document parsing & ingestion**
 - [[Chonkie]] — Open-source Python/JS ingestion library that provides 10+ chunking strategies (token, sentence, semantic, neural, code, LLM-powered, and more), embedding integrations, vector DB handshakes, and a self-hosted REST API — all from a single `pip install chonkie`.

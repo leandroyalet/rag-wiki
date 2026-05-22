@@ -4,8 +4,8 @@ aliases: [RAG]
 tags: [rag, retrieval, generation, foundational]
 status: draft
 created: 2026-04-18
-updated: 2026-04-18
-sources: ["[[lewis2020rag]]", "[[emonet2024sparql]]", "[[barnett2024failures]]", "[[agrawal2025cag]]", "[[chatzikyriakidis2025raggedevents]]", "[[oche2025ragsurvey]]", "[[wampler2025ragstack]]", "[[brehme2025ragindustry]]"]
+updated: 2026-05-16
+sources: ["[[lewis2020rag]]", "[[emonet2024sparql]]", "[[barnett2024failures]]", "[[agrawal2025cag]]", "[[chatzikyriakidis2025raggedevents]]", "[[oche2025ragsurvey]]", "[[wampler2025ragstack]]", "[[brehme2025ragindustry]]", "[[01_Sources/web_clips/Different Retrieval Methods  by Yed Pavankumar]]", "[[01_Sources/web_clips/RAG, LLM Wiki, or Gbrain? How Your Agent Remembers Changes Everything  by Yanli Liu  in AI Advances]]"]
 ---
 
 # Retrieval-Augmented Generation
@@ -53,6 +53,10 @@ Optionally, a [[Reranking]] step is inserted between 2 and 3 to filter noise.
 - **Advanced RAG** — adds query expansion techniques ([[HyDE]], [[Query Expansion]]), reranking, and post-processing.
 - **Modular RAG** — configurable orchestration, sometimes with [[Multi-hop Retrieval]] or agentic loops.
 - [[RAG-Fusion]], [[RAPTOR]], [[GraphRAG]] as specific extensions.
+- **Iterative RAG** — performs multiple retrieval loops; each pass uses the LLM's partial answer to reformulate the next query until the response converges. Related to [[Multi-hop Retrieval]]. [[01_Sources/web_clips/Different Retrieval Methods  by Yed Pavankumar]]
+- **Adaptive RAG** — dynamically selects the retrieval strategy (no retrieval / single-hop / multi-hop) based on query complexity, routing simple fact lookups past the retriever entirely. [[01_Sources/web_clips/Different Retrieval Methods  by Yed Pavankumar]]
+- **Real-Time RAG** — incorporates live data feeds (news APIs, event streams) to keep retrieved knowledge fresh for time-sensitive queries. [[01_Sources/web_clips/Different Retrieval Methods  by Yed Pavankumar]]
+- **Hierarchical RAG** — organises the index as a multi-level tree: summaries at higher levels, raw chunks at leaves; retrieval starts at summary level and drills down only when needed. See also [[RAPTOR]]. [[01_Sources/web_clips/Different Retrieval Methods  by Yed Pavankumar]]
 - **Structured-output RAG** — generation target is a formal query (SPARQL, SQL) rather than free text; requires schema-aware retrieval and a validation loop. See [[Text-to-SPARQL]]. [[emonet2024sparql]]
 
 ## Trade-offs
@@ -74,6 +78,13 @@ The **inverse calibration principle** ([[chatzikyriakidis2025raggedevents]]): fo
 
 ## Critique of the pattern
 Karpathy (2026) argues that classic RAG **rediscovers knowledge on every query**: the synthesis doesn't accumulate. He proposes compiling that knowledge into a wiki maintained by the LLM — the pattern this vault uses. See [[CLAUDE|CLAUDE.md]].
+
+Liu (2025) names three structural failure patterns inherent to the RAG architecture [[01_Sources/web_clips/RAG, LLM Wiki, or Gbrain? How Your Agent Remembers Changes Everything  by Yanli Liu  in AI Advances]]:
+- **The chunking problem** — RAG retrieves text fragments, not synthesized knowledge; questions requiring cross-document reasoning receive disconnected pieces rather than an integrated answer.
+- **The re-derivation problem** — every query re-runs retrieval and synthesis from scratch; no learning accumulates across sessions and redundant computation is unavoidable.
+- **The passivity problem** — RAG is reactive: it waits for queries; it never proactively maintains, reconciles, or updates its knowledge base.
+
+These limitations motivate hybrid architectures: LLM Wiki (Karpathy's "compiler" model, where the LLM synthesises and writes knowledge into long-lived notes) and GBrain / "fat skills" (Garry Tan's "operator" model, where agents autonomously act and maintain state). [[01_Sources/web_clips/RAG, LLM Wiki, or Gbrain? How Your Agent Remembers Changes Everything  by Yanli Liu  in AI Advances]]
 
 ## Industry adoption (2025)
 A semi-structured interview study with 13 industry practitioners ([[brehme2025ragindustry]]) found:
@@ -119,3 +130,5 @@ Evaluation: [[RAGAS]], [[DeepEval]], [[TruLens]], [[LLM-as-Judge]].
 - [[chatzikyriakidis2025raggedevents]] — inverse calibration principle: strong models may degrade with RAG augmentation.
 - [[wampler2025ragstack]] — five-dimensional taxonomy + trust framework from 2018–2025 systematic review.
 - [[brehme2025ragindustry]] — 13-practitioner interview study: data preprocessing top challenge; human eval still dominant.
+- [[01_Sources/web_clips/Different Retrieval Methods  by Yed Pavankumar]] — taxonomy of RAG variants including Iterative, Adaptive, Real-Time, Hierarchical.
+- [[01_Sources/web_clips/RAG, LLM Wiki, or Gbrain? How Your Agent Remembers Changes Everything  by Yanli Liu  in AI Advances]] — three-architecture comparison; chunking/re-derivation/passivity failure patterns.

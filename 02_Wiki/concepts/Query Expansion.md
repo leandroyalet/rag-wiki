@@ -4,8 +4,8 @@ aliases: [query rewriting, query augmentation]
 tags: [rag, retrieval, query]
 status: stub
 created: 2026-04-18
-updated: 2026-04-18
-sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]"]
+updated: 2026-05-16
+sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]", "[[01_Sources/web_clips/Building the Entire RAG Ecosystem and Optimizing Every Component]]"]
 ---
 
 # Query Expansion
@@ -30,7 +30,8 @@ A single short user query often under-specifies the information need and misses 
 ## Variants
 - [[HyDE]] — generates a full hypothetical document to bridge the query-document embedding gap.
 - [[RAG-Fusion]] — generates multiple query variants, retrieves for each, fuses results with Reciprocal Rank Fusion (RRF).
-- **Step-back prompting** — rephrase to a more abstract / higher-level question to retrieve conceptual context first.
+- **Step-back prompting** — rephrase to a more abstract / higher-level question to retrieve conceptual context first. [[01_Sources/web_clips/Building the Entire RAG Ecosystem and Optimizing Every Component]]
+- **Sub-question decomposition** — break a complex question into simpler atomic sub-questions, retrieve independently, then synthesize; implemented in LangChain as `MultiQueryRetriever` with decomposition prompt. [[01_Sources/web_clips/Building the Entire RAG Ecosystem and Optimizing Every Component]]
 
 ## Trade-offs
 - ✅ Higher recall: more diverse queries surface a wider range of relevant documents.
@@ -50,3 +51,4 @@ A single short user query often under-specifies the information need and misses 
 
 ## Sources
 - [[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]
+- [[01_Sources/web_clips/Building the Entire RAG Ecosystem and Optimizing Every Component]]

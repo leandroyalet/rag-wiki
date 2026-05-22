@@ -37,6 +37,8 @@ Many systems also support [[Hybrid Search]] by combining ANN with a [[Sparse Ret
 | [[Pinecone]] | Managed cloud | Serverless, no ops |
 | [[FAISS]] | Library (no server) | Fastest for batch offline search, Meta OSS |
 | [[Weaviate]] | Self-hosted / Cloud | GraphQL API, built-in [[BM25]] hybrid |
+| [[Infinity]] | Self-hosted (single binary) | Dense + sparse + tensor + full-text hybrid; 0.1 ms vector latency; no external dependencies; InfiniFlow |
+| [[Milvus]] | Self-hosted / Zilliz Cloud | Go+C++, HNSW/DiskANN/GPU (CAGRA), sparse BM25, Kubernetes-native |
 | Chroma | Embedded / Hosted | Lightweight, popular in prototypes |
 | pgvector | PostgreSQL extension | Keeps vectors inside the relational DB |
 
@@ -59,6 +61,8 @@ Many systems also support [[Hybrid Search]] by combining ANN with a [[Sparse Ret
 - [[Pinecone]]
 - [[FAISS]]
 - [[Weaviate]]
+- [[Infinity]]
+- [[Milvus]]
 
 ## Sources
 - [[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]

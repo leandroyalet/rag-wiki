@@ -4,8 +4,8 @@ aliases: [RAG Fusion, multi-query RAG]
 tags: [rag, method, query-expansion, retrieval]
 status: stub
 created: 2026-04-18
-updated: 2026-04-21
-sources: []
+updated: 2026-05-16
+sources: ["[[01_Sources/web_clips/Building the Entire RAG Ecosystem and Optimizing Every Component]]"]
 introduced_by: Zackary Rackauckas
 year: 2023
 ---
@@ -50,4 +50,6 @@ RRF_score(d) = Σ_i  1 / (k + rank_i(d))
 - [[Hybrid Search]] — also merges multiple ranked lists (dense + sparse), using the same RRF mechanism.
 
 ## Sources
-> [!todo] Source needed — Rackauckas 2023; no paper in 01_Sources/
+- [[01_Sources/web_clips/Building the Entire RAG Ecosystem and Optimizing Every Component]] — covers RAG-Fusion with k=60 RRF default and LangChain `MultiQueryRetriever` implementation.
+
+> [!todo] Source needed — Rackauckas 2023 original blog post; no paper in 01_Sources/

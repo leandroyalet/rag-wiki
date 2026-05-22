@@ -1,11 +1,11 @@
 ---
 type: concept
-aliases: [multi-step retrieval, iterative retrieval, chained retrieval]
+aliases: [multi-step retrieval, iterative retrieval, chained retrieval, Iterative RAG]
 tags: [rag, retrieval, reasoning]
 status: stub
 created: 2026-04-18
-updated: 2026-04-18
-sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]"]
+updated: 2026-05-16
+sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]", "[[01_Sources/web_clips/Different Retrieval Methods  by Yed Pavankumar]]"]
 ---
 
 # Multi-hop Retrieval
@@ -50,3 +50,4 @@ In practice the decomposition step is often driven by an LLM agent or [[Query Ex
 
 ## Sources
 - [[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]
+- [[01_Sources/web_clips/Different Retrieval Methods  by Yed Pavankumar]]
