@@ -4,8 +4,8 @@ aliases: [Hybrid Retrieval, Dense + Sparse]
 tags: [rag, retrieval, hybrid-search]
 status: stub
 created: 2026-04-18
-updated: 2026-04-18
-sources: ["[[01_Sources/web_clips/Contextual Retrieval in AI Systems]]", "[[01_Sources/web_clips/How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI]]", "[[01_Sources/web_clips/sbert-net-sentence-transformers-library]]"]
+updated: 2026-06-18
+sources: ["[[01_Sources/web_clips/Contextual Retrieval in AI Systems]]", "[[01_Sources/web_clips/How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI]]", "[[01_Sources/web_clips/sbert-net-sentence-transformers-library]]", "[[sen2026grep]]"]
 introduced_by: 
 year: 
 ---
@@ -55,6 +55,9 @@ Two failure modes that hybrid search + reranking help mitigate [[01_Sources/web_
 
 Both are worsened by fetching large k without a precision stage (reranking or LLM verification).
 
+## Hybrid routing in agents
+In [[Agentic Search]], hybrid retrieval can emerge organically: when an agent has access to *both* a lexical (`grep`) tool and a vector tool, it can choose between them — or call both — per query. [[sen2026grep]] caution that, unlike a static pipeline, the benefit of having both tools is mediated by the [[Agent Harness]]: lexical and dense optimize different failure modes (grep is high-precision but brittle to phrasing; vector is broad but elevates near-distractors), and which one the agent reaches for first is shaped by harness defaults and how results are surfaced. They recommend conditioning "default to vector / default to grep" advice on backbone strength and on whether the task rewards literal-span recovery vs conceptual blending. [[sen2026grep]]
+
 ## When to use / when not to
 - ✅ Corpora with lots of jargon, product codes, IDs, citations.
 - ✅ When a single modality has low recall in internal evals.
@@ -67,8 +70,10 @@ Both are worsened by fetching large k without a precision stage (reranking or LL
 - [[Reranking]] — complementary, not alternative.
 - [[RAG-Fusion]] — generalizes the idea to multiple reformulated queries.
 - [[Contextual Retrieval]] — extends Hybrid Search with LLM-generated context prepended to both embedding and BM25 inputs.
+- [[Agentic Search]] — hybrid routing emerges when an agent has both lexical and dense tools.
 
 ## Sources
 - [[01_Sources/web_clips/Contextual Retrieval in AI Systems]]
 - [[01_Sources/web_clips/How to Select the 5 Most Relevant Documents for AI Search  by Eivind Kjosbakken  in Towards AI]]
+- [[sen2026grep]]
 > [!todo] Source needed — add the original RRF paper (Cormack et al., 2009) and comparative benchmarks on [[BEIR]].

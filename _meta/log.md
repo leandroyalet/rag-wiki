@@ -477,3 +477,24 @@ Format:
 - **operation**: lint-wiki
 - **files touched**: `_meta/lint-2026-05-22.md`
 - **notes**: 29 issues across 73 pages — 2 broken links, 1 malformed frontmatter, 5 orphans, 1 duplicate candidate pair, 20 uncited pages; 0 missing frontmatter fields, 0 empty stubs, 0 new contradictions
+
+## 2026-06-18 — Claude Code (/ingest)
+- **operation**: ingest
+- **source**: 2605.15184v1.pdf → `01_Sources/papers/sen2026grep.md` (Sen et al. 2026, "Is Grep All You Need? How Agent Harnesses Reshape Agentic Search")
+- **files touched**:
+  - `01_Sources/papers/sen2026grep.md` — CREATED: literature note (summarized)
+  - `02_Wiki/concepts/Agentic Search.md` — CREATED: concept page
+  - `02_Wiki/concepts/Agent Harness.md` — CREATED: concept page (custom vs provider-native CLI; inline vs file-based tool calling)
+  - `02_Wiki/concepts/Context Rot.md` — CREATED: concept page
+  - `02_Wiki/benchmarks/LongMemEval.md` — CREATED: benchmark page (LongMemEval-S, 6 categories, GPT-4o grader)
+  - `02_Wiki/methods/ReAct.md` — CREATED: method page
+  - `02_Wiki/concepts/Dense Retrieval.md` — UPDATED: added "In agentic search" section + related/sources
+  - `02_Wiki/concepts/Sparse Retrieval.md` — UPDATED: added "Grep as agentic lexical search" section + related/sources
+  - `02_Wiki/methods/Hybrid Search.md` — UPDATED: added "Hybrid routing in agents" section + related/sources
+  - `02_Wiki/benchmarks/BEIR.md` — UPDATED: added static-pipeline caveat (agent-scaffolding variance) + related/sources
+- **notes**: key claim — in agentic long-memory QA, grep > vector on average and inline grep beats inline vector for every harness–model pair, but harness + tool-calling mode (inline vs file-based) shift or invert the result. Uncited canonical refs (ReAct/Yao 2023, Lost-in-the-Middle/Liu 2024, BM25/Robertson 2009) marked with [!todo] Source needed. Chronos (authors' prior temporal-memory harness, arXiv:2603.16862) mentioned inline rather than given its own page.
+
+## 2026-06-18 — Claude Code (/lint-wiki)
+- **operation**: lint-wiki
+- **files touched**: `_meta/lint-2026-06-18.md`
+- **notes**: 43 issues across 78 pages — 15 distinct broken-link targets (87 occurrences; 10 are unresolved source citekeys whose papers exist under descriptive filenames, 4 intra-wiki formatting errors, 1 malformed alias), 6 orphans, 0 missing frontmatter, 0 empty stubs, 1 duplicate/alias-collision candidate (BM25), 2 wanted pages (SPLADE, Chronos), 0 new contradictions (C1 standing), 19 uncited pages. Root cause of most broken links: literature notes not named by citekey per CLAUDE.md §3.

@@ -1,7 +1,7 @@
 ---
 type: meta
 tags: [index, map-of-content]
-updated: 2026-05-22
+updated: 2026-06-18
 ---
 
 # Index — Entry map to the RAG wiki
@@ -14,13 +14,16 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 
 ## 🧭 Knowledge tracks
 
-### Concepts (25)
+### Concepts (28)
 
+- [[Agent Harness]] — The environment layer that runs an agent's tool-calling loop (custom vs provider-native CLI) — it shapes retrieval effectiveness as much as the retriever itself, and chooses inline vs file-based result delivery.
+- [[Agentic Search]] — Iterative, agent-directed retrieval where the LLM decides what to search, how many queries to issue, and whether results suffice — "retrieval-plus-orchestration," not a fixed query against a static index.
 - [[Answer Relevance]] — Evaluation metric measuring whether the generated answer actually addresses the question asked — penalises incomplete, off-topic, or redundant answers without requiring a reference answer.
 - [[BM25]] — The dominant lexical ranking function — a probabilistic TF-IDF variant that saturates term frequency and penalises long documents. Standard baseline for sparse retrieval in every RAG pipeline.
 - [[Cache-Augmented Generation]] — An alternative to RAG that preloads a curated knowledge snapshot directly into the LLM's context window before query time, eliminating retrieval latency and noise at the cost of context-window capacity and cache staleness.
 - [[Chunking]] — Splitting source documents into smaller, overlapping pieces before indexing so that each retrieved passage is semantically focused and fits the LLM's context window.
 - [[Context Relevance]] — A RAG evaluation metric that measures how much of the retrieved context actually pertains to the query — high context relevance means little noise was injected into the prompt.
+- [[Context Rot]] — Degradation on long-horizon tasks as tool results, history, and the prompt crowd the context window — the main motivation for file-based tool-calling in agents.
 - [[Dense Retrieval]] — Retrieving documents by nearest-neighbor search in embedding space rather than keyword overlap — captures semantic similarity but requires a bi-encoder and an ANN index.
 - [[Embeddings]] — Fixed-dimension floating-point vectors that encode the semantic meaning of text, enabling similarity search in a [[Vector Database]] instead of keyword matching.
 - [[Faithfulness]] — A RAG evaluation metric that measures whether every claim in the generated answer can be traced back to the retrieved context — a score of 1.0 means no hallucination.
@@ -42,7 +45,7 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 - [[Sparse Retrieval]] — Retrieving documents by token-overlap scoring ([[BM25]], TF-IDF) — fast, interpretable, and excellent for exact-match queries; misses semantic similarity.
 - [[Vector Database]] — A database purpose-built to store embedding vectors and run fast Approximate Nearest Neighbor (ANN) search, forming the retrieval backbone of most RAG systems.
 
-### Methods & Techniques (14)
+### Methods & Techniques (15)
 
 - [[Adaptive Chunking]] — Per-document chunking strategy selection guided by five intrinsic quality metrics — moving away from "one-size-fits-all" splitting to document-aware preprocessing that improves RAG answer correctness by ~10 percentage points.
 - [[Contextual Retrieval]] — Prepend a short LLM-generated context summary to each chunk before embedding and BM25 indexing, so isolated chunks retain the document-level information needed to be retrieved correctly — reducing top-20 retrieval failures by 49%, and 67% when combined with reranking.
@@ -55,6 +58,7 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 - [[MoC]] — A granularity-aware routing framework that sends text to specialized small LMs based on target chunk size, each of which outputs regex boundary markers rather than full text — achieving LLM-level chunking quality at small-model cost.
 - [[RAG-Fusion]] — Generate N query variants with an LLM, retrieve for each independently, then merge all result lists with Reciprocal Rank Fusion — improving recall without modifying the retriever.
 - [[RAPTOR]] — Recursively clusters and summarises chunks into a tree of increasing abstraction; retrieval searches all levels simultaneously — getting precise detail or high-level themes as the query demands.
+- [[ReAct]] — Agent pattern that interleaves reasoning traces with tool actions (Thought → Action → Observation) — the dominant loop for custom agent harnesses.
 - [[Reciprocal Rank Fusion]] — Score-free rank aggregation that merges multiple ranked lists into one by summing reciprocal ranks — the standard fusion step in [[Hybrid Search]] and [[RAG-Fusion]].
 - [[Reranking]] — A second-stage pass that rescores a small candidate set from the bi-encoder with a slower but more accurate cross-encoder, improving precision before passing context to the LLM.
 - [[Text-to-SPARQL]] — Translating natural-language questions into SPARQL queries — typically by combining a RAG retrieval step (example Q/A pairs + schema context) with a validation loop that checks and corrects the generated query.
@@ -66,12 +70,13 @@ Keep this page up to date by hand or with `/update-index`. If it grows too big, 
 - [[E5]] — Microsoft's family of text embedding models (EmbEddings from bidirEctional Encoder rEpresentations), trained with weakly-supervised contrastive learning on large web text pairs — strong across MTEB tasks, especially retrieval.
 - [[Sentence-BERT]] — The 2019 model that made BERT usable for semantic similarity at scale — a siamese bi-encoder that pools BERT into fixed-length sentence vectors, enabling cosine-similarity search without expensive pairwise inference.
 
-### Benchmarks & Evaluation (6)
+### Benchmarks & Evaluation (7)
 
 - [[BEIR]] — A heterogeneous retrieval benchmark covering 18 datasets across 9 diverse domains — the standard zero-shot transfer test for dense and sparse retrieval models.
 - [[GroUSE]] — A meta-evaluation benchmark of 144 hand-crafted unit tests that measures whether an LLM judge correctly detects all 7 grounded-QA failure modes — revealing that RAGAS and DeepEval fail many edge cases despite high GPT-4 correlation.
 - [[IRPAPERS]] — A 3,230-page visual benchmark of IR scientific papers comparing image- and text-based retrieval and QA, with the key finding that neither modality dominates and multimodal fusion gives the best results.
 - [[KILT]] — A unified benchmark covering 11 knowledge-intensive NLP tasks — QA, slot filling, fact-checking, dialogue, and entity linking — all grounded against the same Wikipedia snapshot, enabling apples-to-apples comparison of retrieval systems.
+- [[LongMemEval]] — Benchmark for answering questions over long, multi-session conversations (oracle + distractor sessions across 6 categories) — tests long-term interactive memory, not single-document retrieval.
 - [[MME]] — The first comprehensive evaluation benchmark for Multimodal LLMs — 14 subtasks across perception and cognition, manually annotated to prevent data leakage, with a binary yes/no instruction format that enables clean quantitative comparison.
 - [[MTEB]] — The standard leaderboard for text embedding models — 8 task types, 181 datasets, evaluated on NDCG@10 for retrieval — the first stop when choosing an embedding model for RAG.
 

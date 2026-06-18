@@ -4,8 +4,8 @@ aliases: [[[BM25]], TF-IDF, lexical retrieval, keyword search]
 tags: [rag, retrieval]
 status: stub
 created: 2026-04-18
-updated: 2026-05-08
-sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]", "[[01_Sources/web_clips/sbert-net-sentence-transformers-library]]"]
+updated: 2026-06-18
+sources: ["[[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]", "[[01_Sources/web_clips/sbert-net-sentence-transformers-library]]", "[[sen2026grep]]"]
 ---
 
 # Sparse Retrieval
@@ -57,6 +57,9 @@ doc_emb = model.encode_document("Hallucination occurs when retrieved context is 
 
 SPLADE is served through the `sentence-transformers` library as the `SparseEncoder` class and slots naturally into [[Hybrid Search]] pipelines alongside a dense [[Embeddings|bi-encoder]]. [[01_Sources/web_clips/sbert-net-sentence-transformers-library]]
 
+## Grep as agentic lexical search
+In tool-using agents, the simplest sparse retriever is `grep` — regex/substring matching over raw text, with no inverted index, embedding model, or external service. When `grep` is a native bash tool, the agent constructs its own search terms, flags, and file targets dynamically rather than calling a fixed search API (see [[Agentic Search]]). In a 116-question [[LongMemEval]] study, lexical `grep` generally beat dense/vector retrieval and inline grep exceeded inline vector for *every* harness–model pair — because that task rewards recovering literal witnesses (exact dates, counts, preferences, spans) that remain stable under tokenization. Grep is "deliberately narrow": high-precision on the patterns it generates, but a vocabulary mismatch returns nothing. [[sen2026grep]]
+
 ## Trade-offs
 - ✅ Exact keyword match — catches rare terms that dense models miss.
 - ✅ No GPU at query time; very fast at scale with inverted indexes.
@@ -71,7 +74,9 @@ SPLADE is served through the `sentence-transformers` library as the `SparseEncod
 - [[Embeddings]]
 - [[Retrieval-Augmented Generation]]
 - [[BEIR]]
+- [[Agentic Search]]
 
 ## Sources
 - [[01_Sources/web_clips/iwai-2026-rag-architectures-roadmap]]
 - [[01_Sources/web_clips/sbert-net-sentence-transformers-library]]
+- [[sen2026grep]]

@@ -4,8 +4,8 @@ aliases: [Benchmarking IR, Heterogeneous Retrieval Benchmark]
 tags: [rag, eval, benchmark, retrieval]
 status: stub
 created: 2026-04-18
-updated: 2026-04-21
-sources: ["[[oche2025ragsurvey]]"]
+updated: 2026-06-18
+sources: ["[[oche2025ragsurvey]]", "[[sen2026grep]]"]
 homepage: https://github.com/beir-cellar/beir
 repo: https://github.com/beir-cellar/beir
 docs: 
@@ -49,11 +49,14 @@ BEIR (Benchmarking Information Retrieval) evaluates retrieval models on their ab
 - Binary relevance judgments (relevant / not relevant) — nuanced relevance not captured.
 - Does not evaluate generation quality — retrieval-only benchmark.
 - Does not cover visual or multimodal retrieval (see [[IRPAPERS]]).
+- **Static-pipeline framing**: BEIR scores a fixed query against a static index. [[sen2026grep]] argues that reporting only [[BM25]] vs ANN this way *under-estimates the variance introduced by agent scaffolding* — in [[Agentic Search]] the same retriever's end-to-end accuracy swings widely with the [[Agent Harness]] and tool-calling mode, so static-pipeline rankings do not predict agentic effectiveness.
 
 ## Related benchmarks
 - [[MTEB]] — broader embedding benchmark; Retrieval tab uses BEIR datasets.
 - [[KILT]] — knowledge-intensive NLP tasks including both retrieval and generation evaluation.
 - [[IRPAPERS]] — page-level visual + text retrieval for scientific papers.
+- [[LongMemEval]] — end-to-end agentic long-memory QA; exposes harness-driven variance that static retrieval benchmarks miss.
 
 ## Sources
 - [[oche2025ragsurvey]]
+- [[sen2026grep]]

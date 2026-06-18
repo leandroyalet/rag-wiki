@@ -4,8 +4,8 @@ aliases: [dense passage retrieval, DPR, semantic retrieval]
 tags: [rag, retrieval]
 status: stub
 created: 2026-04-18
-updated: 2026-04-18
-sources: ["[[lewis2020rag]]", "[[01_Sources/web_clips/embedding-models-for-rag]]", "[[oche2025ragsurvey]]", "[[chen2024densex]]"]
+updated: 2026-06-18
+sources: ["[[lewis2020rag]]", "[[01_Sources/web_clips/embedding-models-for-rag]]", "[[oche2025ragsurvey]]", "[[chen2024densex]]", "[[sen2026grep]]"]
 ---
 
 # Dense Retrieval
@@ -32,6 +32,9 @@ The choice of index unit — document, passage, sentence, or proposition — sig
 - **Late interaction / multi-vector** ([[ColBERT]]) — per-token vectors; MaxSim scoring; higher accuracy at higher storage cost.
 - **Asymmetric retrieval** — query and document encoders are separate models (allows different-length optimization).
 
+## In agentic search
+When dense retrieval is one tool among several in an [[Agentic Search]] loop, its end-to-end effectiveness is not a property of the retriever alone. In a 116-question [[LongMemEval]] study, **inline vector retrieval lost to inline `grep` for every harness–model pair**, and the gap depended strongly on the [[Agent Harness]] and on whether results were delivered inline or via files. Dense retrieval is "deliberately broad": it surfaces paraphrases and oblique mentions but also elevates semantically *near* distractors, which hurts when questions are short or under-specified. File-based ("programmatic") delivery sometimes lets vector exceed grep, because large vector result dumps no longer crowd the context window. [[sen2026grep]]
+
 ## Trade-offs
 - ✅ Retrieves semantically related passages even without exact keyword match.
 - ✅ Scales to billions of documents with ANN indexes (HNSW, ScaNN).
@@ -47,8 +50,10 @@ The choice of index unit — document, passage, sentence, or proposition — sig
 - [[Reranking]]
 - [[ColBERT]]
 - [[Retrieval-Augmented Generation]]
+- [[Agentic Search]]
 
 ## Sources
 - [[lewis2020rag]]
 - [[01_Sources/web_clips/embedding-models-for-rag]]
 - [[oche2025ragsurvey]]
+- [[sen2026grep]]
